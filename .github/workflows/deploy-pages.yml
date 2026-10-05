@@ -29,7 +29,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: |
+          npm install --legacy-peer-deps
+          chmod -R +x node_modules/.bin || true
 
       - name: Build
         run: npm run build
