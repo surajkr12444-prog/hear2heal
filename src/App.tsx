@@ -24,7 +24,9 @@ import {
   PanelLeftOpen,
   LogOut,
   Wifi,
-  WifiOff
+  WifiOff,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { ScreenId, Language, PainSeverity, PatientProfile } from './types';
 import { LANGUAGES, INITIAL_PATIENT_PROFILE } from './data/mockData';
@@ -80,6 +82,21 @@ export default function App() {
       window.removeEventListener('offline', syncNetwork);
     };
   }, []);
+
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const saved = localStorage.getItem('hear2heal_theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+    return 'dark'; // Default to Dark Neumorphic theme to eliminate washed-out white look
+  });
+
+  useEffect(() => {
+    localStorage.setItem('hear2heal_theme', theme);
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
 
   useEffect(() => {
     savePatientProfile(patientProfile);
@@ -303,6 +320,23 @@ export default function App() {
             >
               <Globe className="w-3.5 h-3.5" />
               <span className="hidden md:inline">Languages</span>
+            </button>
+
+            {/* Theme Toggle Button (Dark / Light Neumorphism) */}
+            <button
+              onClick={() => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))}
+              className="px-2.5 py-1.5 rounded-xl neu-btn text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer hover:scale-105 active:scale-95"
+              title={theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-3.5 h-3.5 text-amber-400" />
+              ) : (
+                <Moon className="w-3.5 h-3.5 text-indigo-600" />
+              )}
+              <span className="hidden sm:inline font-bold">
+                {theme === 'dark' ? 'Light' : 'Dark'}
+              </span>
             </button>
 
             {/* 4. Quick Emergency SOS Button */}

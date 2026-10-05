@@ -1,79 +1,113 @@
 @import "tailwindcss";
 
 /* -------------------------------------------------------------
- * Neumorphism (Soft UI) Modern Clinical Design System
+ * Dynamic Dual-Theme Neumorphic Clinical Design System
  * ------------------------------------------------------------- */
 :root {
   --neu-bg: #e6ecf5;
-  --neu-bg-light: #edf2f9;
-  --neu-bg-card: #e4eaf4;
-  --neu-highlight: #ffffff;
-  --neu-shadow: #b8c5d6;
-  --neu-shadow-soft: rgba(184, 197, 214, 0.65);
-  --neu-shadow-deep: #a5b4c7;
-  --neu-blue: #2563eb;
-  --neu-red: #ef4444;
-  --neu-emerald: #10b981;
+  --neu-card: #e6ecf5;
+  --neu-inset-bg: #e6ecf5;
+  --neu-text: #0f172a;
+  --neu-text-muted: #64748b;
+  --neu-raised-shadow: 8px 8px 18px #b8c5d6, -8px -8px 18px #ffffff;
+  --neu-raised-sm-shadow: 4px 4px 10px rgba(184, 197, 214, 0.65), -4px -4px 10px #ffffff;
+  --neu-raised-lg-shadow: 14px 14px 28px #b8c5d6, -14px -14px 28px #ffffff;
+  --neu-raised-border: 1px solid rgba(255, 255, 255, 0.85);
+  --neu-inset-shadow: inset 4px 4px 8px #b8c5d6, inset -4px -4px 8px #ffffff;
+  --neu-inset-sm-shadow: inset 2px 2px 5px rgba(184, 197, 214, 0.6), inset -2px -2px 5px #ffffff;
+  --neu-inset-deep-shadow: inset 6px 6px 14px #a5b4c7, inset -6px -6px 14px #ffffff;
+  --neu-inset-border: 1px solid rgba(184, 197, 214, 0.35);
+  --neu-btn-shadow: 5px 5px 12px rgba(184, 197, 214, 0.65), -5px -5px 12px #ffffff;
+  --neu-btn-border: 1px solid rgba(255, 255, 255, 0.7);
+  --neu-dial-border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.dark {
+  --neu-bg: #0b1120;
+  --neu-card: #131d31;
+  --neu-inset-bg: #080d19;
+  --neu-text: #f8fafc;
+  --neu-text-muted: #94a3b8;
+  --neu-raised-shadow: 7px 7px 18px rgba(0, 0, 0, 0.75), -5px -5px 14px rgba(255, 255, 255, 0.04);
+  --neu-raised-sm-shadow: 4px 4px 10px rgba(0, 0, 0, 0.65), -3px -3px 8px rgba(255, 255, 255, 0.04);
+  --neu-raised-lg-shadow: 12px 12px 26px rgba(0, 0, 0, 0.8), -8px -8px 20px rgba(255, 255, 255, 0.05);
+  --neu-raised-border: 1px solid rgba(255, 255, 255, 0.08);
+  --neu-inset-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.85), inset -3px -3px 7px rgba(255, 255, 255, 0.03);
+  --neu-inset-sm-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.75), inset -2px -2px 5px rgba(255, 255, 255, 0.03);
+  --neu-inset-deep-shadow: inset 6px 6px 14px rgba(0, 0, 0, 0.9), inset -4px -4px 10px rgba(255, 255, 255, 0.02);
+  --neu-inset-border: 1px solid rgba(255, 255, 255, 0.04);
+  --neu-btn-shadow: 5px 5px 14px rgba(0, 0, 0, 0.65), -4px -4px 10px rgba(255, 255, 255, 0.04);
+  --neu-btn-border: 1px solid rgba(255, 255, 255, 0.07);
+  --neu-dial-border: 2px solid rgba(56, 189, 248, 0.25);
 }
 
 /* Base Neumorphic Surface */
 .neu-bg {
-  background-color: #e6ecf5;
+  background-color: var(--neu-bg);
+  color: var(--neu-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* 1. Raised Extrusions */
 .neu-raised {
-  background-color: #e6ecf5;
-  box-shadow: 8px 8px 18px #b8c5d6, -8px -8px 18px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: var(--neu-card);
+  box-shadow: var(--neu-raised-shadow);
+  border: var(--neu-raised-border);
+  transition: all 0.25s ease;
 }
 
 .neu-raised-sm {
-  background-color: #e6ecf5;
-  box-shadow: 4px 4px 10px rgba(184, 197, 214, 0.65), -4px -4px 10px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  background-color: var(--neu-card);
+  box-shadow: var(--neu-raised-sm-shadow);
+  border: var(--neu-raised-border);
+  transition: all 0.25s ease;
 }
 
 .neu-raised-lg {
-  background-color: #e6ecf5;
-  box-shadow: 14px 14px 28px #b8c5d6, -14px -14px 28px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background-color: var(--neu-card);
+  box-shadow: var(--neu-raised-lg-shadow);
+  border: var(--neu-raised-border);
+  transition: all 0.25s ease;
 }
 
 /* 2. Inset / Sunken Wells */
 .neu-inset {
-  background-color: #e6ecf5;
-  box-shadow: inset 4px 4px 8px #b8c5d6, inset -4px -4px 8px #ffffff;
-  border: 1px solid rgba(184, 197, 214, 0.35);
+  background-color: var(--neu-inset-bg);
+  box-shadow: var(--neu-inset-shadow);
+  border: var(--neu-inset-border);
+  transition: all 0.25s ease;
 }
 
 .neu-inset-sm {
-  background-color: #e6ecf5;
-  box-shadow: inset 2px 2px 5px rgba(184, 197, 214, 0.6), inset -2px -2px 5px #ffffff;
-  border: 1px solid rgba(184, 197, 214, 0.25);
+  background-color: var(--neu-inset-bg);
+  box-shadow: var(--neu-inset-sm-shadow);
+  border: var(--neu-inset-border);
+  transition: all 0.25s ease;
 }
 
 .neu-inset-deep {
-  background-color: #e6ecf5;
-  box-shadow: inset 6px 6px 14px #a5b4c7, inset -6px -6px 14px #ffffff;
+  background-color: var(--neu-inset-bg);
+  box-shadow: var(--neu-inset-deep-shadow);
+  transition: all 0.25s ease;
 }
 
 /* 3. Tactile Interactive Buttons */
 .neu-btn {
-  background-color: #e6ecf5;
-  box-shadow: 5px 5px 12px rgba(184, 197, 214, 0.65), -5px -5px 12px #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  background-color: var(--neu-card);
+  box-shadow: var(--neu-btn-shadow);
+  border: var(--neu-btn-border);
+  color: var(--neu-text);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .neu-btn:hover {
-  box-shadow: 7px 7px 16px #b8c5d6, -7px -7px 16px #ffffff;
+  filter: brightness(1.05);
   transform: translateY(-1px);
 }
 
 .neu-btn:active,
 .neu-btn-pressed {
-  box-shadow: inset 4px 4px 8px #b8c5d6, inset -4px -4px 8px #ffffff !important;
+  box-shadow: var(--neu-inset-shadow) !important;
   transform: translateY(1px);
 }
 
@@ -83,59 +117,69 @@
   box-shadow: 6px 6px 14px rgba(184, 197, 214, 0.7), -6px -6px 14px #ffffff;
 }
 
+.dark .neu-convex {
+  background: linear-gradient(145deg, #17243c, #10192a);
+  box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.7), -4px -4px 10px rgba(255, 255, 255, 0.03);
+}
+
 .neu-concave {
   background: linear-gradient(145deg, #dce4f0, #f5f9ff);
   box-shadow: 6px 6px 14px rgba(184, 197, 214, 0.7), -6px -6px 14px #ffffff;
 }
 
+.dark .neu-concave {
+  background: linear-gradient(145deg, #10192a, #17243c);
+  box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.7), -4px -4px 10px rgba(255, 255, 255, 0.03);
+}
+
 /* 5. Neumorphic Primary Accent Button */
 .neu-btn-primary {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  box-shadow: 6px 6px 16px #b8c5d6, -6px -6px 16px #ffffff, 0 0 16px rgba(37, 99, 235, 0.35);
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.3), -4px -4px 12px rgba(255, 255, 255, 0.1), 0 0 16px rgba(37, 99, 235, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .neu-btn-primary:hover {
-  box-shadow: 8px 8px 20px #b8c5d6, -8px -8px 20px #ffffff, 0 0 24px rgba(37, 99, 235, 0.55);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4), -6px -6px 16px rgba(255, 255, 255, 0.15), 0 0 24px rgba(37, 99, 235, 0.65);
   transform: translateY(-1px);
 }
 
 .neu-btn-primary:active {
-  box-shadow: inset 4px 4px 10px rgba(15, 23, 42, 0.5), inset -4px -4px 10px rgba(96, 165, 250, 0.3) !important;
+  box-shadow: inset 4px 4px 10px rgba(15, 23, 42, 0.6), inset -4px -4px 10px rgba(96, 165, 250, 0.3) !important;
   transform: translateY(1px);
 }
 
 /* 6. Neumorphic Red Emergency SOS Button */
 .neu-btn-sos {
   background: linear-gradient(135deg, #dc2626, #b91c1c);
-  box-shadow: 6px 6px 16px #b8c5d6, -6px -6px 16px #ffffff, 0 0 20px rgba(220, 38, 38, 0.45);
+  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.35), 0 0 20px rgba(220, 38, 38, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
   transition: all 0.2s ease;
 }
 
 .neu-btn-sos:hover {
-  box-shadow: 8px 8px 20px #b8c5d6, -8px -8px 20px #ffffff, 0 0 28px rgba(220, 38, 38, 0.7);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.45), 0 0 28px rgba(220, 38, 38, 0.75);
   transform: translateY(-1px);
 }
 
 .neu-btn-sos:active {
-  box-shadow: inset 4px 4px 10px rgba(127, 29, 29, 0.7), inset -4px -4px 10px rgba(248, 113, 113, 0.3) !important;
+  box-shadow: inset 4px 4px 10px rgba(127, 29, 29, 0.8), inset -4px -4px 10px rgba(248, 113, 113, 0.3) !important;
   transform: translateY(1px);
 }
 
 /* 7. Neumorphic Circular Microphone Dial */
 .neu-mic-dial {
-  background-color: #e6ecf5;
-  box-shadow: 10px 10px 24px #b8c5d6, -10px -10px 24px #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.9);
+  background-color: var(--neu-card);
+  box-shadow: var(--neu-raised-shadow);
+  border: var(--neu-dial-border);
 }
 
 .neu-mic-dial-recording {
-  background-color: #e6ecf5;
-  box-shadow: inset 6px 6px 14px #a5b4c7, inset -6px -6px 14px #ffffff, 0 0 28px rgba(239, 68, 68, 0.55);
+  background-color: var(--neu-card);
+  box-shadow: var(--neu-inset-shadow), 0 0 28px rgba(239, 68, 68, 0.55);
   border: 2px solid rgba(239, 68, 68, 0.65);
 }
 
@@ -404,3 +448,88 @@
   animation: shimmerSlide 3.5s infinite;
   pointer-events: none;
 }
+
+/* -------------------------------------------------------------
+ * Dark Mode Theme Overrides & Global Text Hierarchy
+ * ------------------------------------------------------------- */
+.dark body {
+  background-color: var(--neu-bg);
+  color: var(--neu-text);
+}
+
+.dark header {
+  background-color: #0b1120 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-950 {
+  color: #f8fafc !important;
+}
+
+.dark .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+
+.dark .text-slate-600,
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+.dark .bg-\[\#e6ecf5\] {
+  background-color: var(--neu-card) !important;
+}
+
+.dark .bg-\[\#dee5ee\] {
+  background-color: #090e1a !important;
+}
+
+.dark .bg-slate-50 {
+  background-color: var(--neu-bg) !important;
+}
+
+.dark .bg-white {
+  background-color: var(--neu-card) !important;
+  color: #f8fafc !important;
+}
+
+.dark .border-slate-200,
+.dark .border-slate-100,
+.dark .border-white\/80,
+.dark .border-white\/60,
+.dark .border-white\/50 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: var(--neu-inset-bg) !important;
+  color: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+.dark .neu-inset-deep {
+  background-color: #060a13 !important;
+}
+
+.dark .border-t-white\/60,
+.dark .border-t-white\/80 {
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .border-b-white\/60,
+.dark .border-b-white\/80 {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
