@@ -1,0 +1,12 @@
+{
+  "name": "Hear2Heal",
+  "description": "Offline-first medical translation assistant for clinical communication, emergency triage and local bilingual workflows.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": [
+    "OFFLINE_PWA_CACHE",
+    "LOCAL_MEDICAL_PHRASE_TRANSLATION",
+    "LOCAL_TRIAGE_HEURISTICS",
+    "ON_DEVICE_SPEECH_WHEN_SUPPORTED",
+    "LOCAL_PROFILE_AND_HISTORY_STORAGE"
+  ]
+}
