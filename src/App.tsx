@@ -455,17 +455,6 @@ export default function App() {
               <Pill className="w-3 h-3" />
               <span>Prescriptions</span>
             </button>
-            <button
-              onClick={() => setCurrentScreen('history')}
-              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 transition-all ${
-                currentScreen === 'history'
-                  ? 'neu-btn-primary font-bold'
-                  : 'neu-btn text-slate-700'
-              }`}
-            >
-              <FileText className="w-3 h-3" />
-              <span>History</span>
-            </button>
           </div>
 
           <main className="flex-1 flex flex-col w-full h-full min-h-0 p-0 overflow-y-auto">
