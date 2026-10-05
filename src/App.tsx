@@ -16,7 +16,6 @@ import {
   User,
   Siren,
   Pill,
-  FileText,
   Globe,
   Stethoscope,
   ChevronRight,
@@ -276,24 +275,9 @@ export default function App() {
             </button>
           </div>
 
-          {/* TOP RIGHT CORNER: Conversations History, Profile, Languages, SOS, Clinician Info & Logout */}
+          {/* TOP RIGHT CORNER: Profile, Languages, SOS, Clinician Info & Logout */}
           <div className="flex items-center gap-1.5 sm:gap-2">
-            {/* 1. Conversations History / Transcripts */}
-            <button
-              onClick={() => setCurrentScreen('history')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                currentScreen === 'history'
-                  ? 'neu-btn-primary'
-                  : 'neu-btn text-slate-700'
-              }`}
-              title="View Conversations History & Transcripts"
-            >
-              <FileText className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Conversations History</span>
-              <span className="sm:hidden">History</span>
-            </button>
-
-            {/* 2. Patient Profile */}
+            {/* 1. Patient Profile */}
             <button
               onClick={() => setCurrentScreen('profile')}
               className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
