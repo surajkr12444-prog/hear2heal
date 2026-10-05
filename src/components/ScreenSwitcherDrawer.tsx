@@ -110,32 +110,32 @@ export const ScreenSwitcherDrawer: React.FC<ScreenSwitcherDrawerProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-900/60 backdrop-blur-xs animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/60 backdrop-blur-xs animate-fade-in">
       <div
-        className="w-full max-w-lg bg-white rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[85vh] animate-slide-up"
+        className="w-full max-w-lg neu-bg rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh] animate-slide-up border border-white/50"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}
-        <div className="p-4 px-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/70">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center">
-              <Layers className="w-4 h-4" />
+        <div className="p-4 px-5 neu-raised rounded-t-3xl sm:rounded-3xl flex items-center justify-between m-2.5 mb-1.5">
+          <div className="flex items-center gap-3">
+            <div className="neu-inset-sm w-9 h-9 rounded-xl text-blue-600 flex items-center justify-center">
+              <Layers className="w-5 h-5 stroke-[2.5]" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-slate-900">Hear2Heal Screens</h3>
-              <p className="text-xs text-slate-500">Jump directly to any of the 10 mobile views</p>
+              <h3 className="text-base font-black text-slate-900 tracking-tight">Hear2Heal Screen Index</h3>
+              <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Fast Navigation (10 Clinical Views)</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-700 hover:bg-slate-200/50 transition-colors cursor-pointer"
+            className="neu-btn w-9 h-9 rounded-xl flex items-center justify-center text-slate-600 hover:text-slate-900 transition-all cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Scrollable list of 10 screens */}
-        <div className="p-3 space-y-1.5 overflow-y-auto flex-1 divide-y divide-slate-100">
+        <div className="p-3.5 space-y-2.5 overflow-y-auto flex-1">
           {SCREENS_CONFIG.map((scr) => {
             const isActive = currentScreen === scr.id;
             return (
@@ -145,48 +145,48 @@ export const ScreenSwitcherDrawer: React.FC<ScreenSwitcherDrawerProps> = ({
                   onSelectScreen(scr.id);
                   onClose();
                 }}
-                className={`w-full p-3 rounded-xl flex items-center justify-between text-left transition-all cursor-pointer ${
+                className={`w-full p-3.5 rounded-2xl flex items-center justify-between text-left transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-blue-50 border border-blue-200 shadow-xs'
-                    : 'hover:bg-slate-50 border border-transparent'
+                    ? 'neu-inset ring-2 ring-blue-500/50 bg-[#dee5ee] scale-[0.99]'
+                    : 'neu-raised hover:scale-[1.01] active:scale-[0.98]'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   {/* Screen Number Badge */}
                   <span
-                    className={`w-6 h-6 rounded-lg text-xs font-bold flex items-center justify-center shrink-0 ${
+                    className={`w-7 h-7 rounded-xl text-xs font-black flex items-center justify-center shrink-0 ${
                       isActive
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-slate-100 text-slate-700'
+                        ? 'neu-btn-primary text-white shadow-xs'
+                        : 'neu-inset-deep text-slate-700'
                     }`}
                   >
                     {scr.number}
                   </span>
 
-                  <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-2xs">
+                  <div className="neu-inset-sm w-9 h-9 rounded-xl flex items-center justify-center shrink-0">
                     {scr.icon}
                   </div>
 
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-bold text-slate-900">
+                      <span className={`text-sm font-black ${isActive ? 'text-blue-900' : 'text-slate-900'}`}>
                         {scr.title}
                       </span>
-                      <span className="text-[10px] uppercase font-semibold text-slate-400">
+                      <span className="text-[9px] uppercase font-black px-2 py-0.5 rounded-md neu-inset-deep text-slate-500">
                         {scr.category}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-500 line-clamp-1">{scr.subtitle}</p>
+                    <p className="text-[11px] font-medium text-slate-500 line-clamp-1">{scr.subtitle}</p>
                   </div>
                 </div>
 
                 <div className="pl-2">
                   {isActive ? (
-                    <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-600">
-                      <Check className="w-4 h-4" /> Active
+                    <span className="inline-flex items-center gap-1 text-xs font-black text-blue-700 neu-inset-sm px-2.5 py-1 rounded-xl">
+                      <Check className="w-3.5 h-3.5 stroke-[3]" /> Active
                     </span>
                   ) : (
-                    <ArrowRight className="w-4 h-4 text-slate-300" />
+                    <ArrowRight className="w-4 h-4 text-slate-400" />
                   )}
                 </div>
               </button>
@@ -195,9 +195,9 @@ export const ScreenSwitcherDrawer: React.FC<ScreenSwitcherDrawerProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-3 bg-slate-50 border-t border-slate-100 text-center">
-          <p className="text-[11px] text-slate-500">
-            Offline First Engine · High-reliability clinical terminology v2.4
+        <div className="p-3 mx-3 mb-3 neu-inset-deep rounded-2xl text-center">
+          <p className="text-[11px] font-black text-slate-500 uppercase tracking-wider">
+            Offline Clinical Engine · Tactical Neumorphic UI v3.0
           </p>
         </div>
       </div>

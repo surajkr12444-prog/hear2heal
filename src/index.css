@@ -1,7 +1,186 @@
 @import "tailwindcss";
 
 /* -------------------------------------------------------------
- * Hear2Heal - Dynamic Animations & Micro-Interactions
+ * Neumorphism (Soft UI) Modern Clinical Design System
+ * ------------------------------------------------------------- */
+:root {
+  --neu-bg: #e6ecf5;
+  --neu-bg-light: #edf2f9;
+  --neu-bg-card: #e4eaf4;
+  --neu-highlight: #ffffff;
+  --neu-shadow: #b8c5d6;
+  --neu-shadow-soft: rgba(184, 197, 214, 0.65);
+  --neu-shadow-deep: #a5b4c7;
+  --neu-blue: #2563eb;
+  --neu-red: #ef4444;
+  --neu-emerald: #10b981;
+}
+
+/* Base Neumorphic Surface */
+.neu-bg {
+  background-color: #e6ecf5;
+}
+
+/* 1. Raised Extrusions */
+.neu-raised {
+  background-color: #e6ecf5;
+  box-shadow: 8px 8px 18px #b8c5d6, -8px -8px 18px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.neu-raised-sm {
+  background-color: #e6ecf5;
+  box-shadow: 4px 4px 10px rgba(184, 197, 214, 0.65), -4px -4px 10px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.neu-raised-lg {
+  background-color: #e6ecf5;
+  box-shadow: 14px 14px 28px #b8c5d6, -14px -14px 28px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+/* 2. Inset / Sunken Wells */
+.neu-inset {
+  background-color: #e6ecf5;
+  box-shadow: inset 4px 4px 8px #b8c5d6, inset -4px -4px 8px #ffffff;
+  border: 1px solid rgba(184, 197, 214, 0.35);
+}
+
+.neu-inset-sm {
+  background-color: #e6ecf5;
+  box-shadow: inset 2px 2px 5px rgba(184, 197, 214, 0.6), inset -2px -2px 5px #ffffff;
+  border: 1px solid rgba(184, 197, 214, 0.25);
+}
+
+.neu-inset-deep {
+  background-color: #e6ecf5;
+  box-shadow: inset 6px 6px 14px #a5b4c7, inset -6px -6px 14px #ffffff;
+}
+
+/* 3. Tactile Interactive Buttons */
+.neu-btn {
+  background-color: #e6ecf5;
+  box-shadow: 5px 5px 12px rgba(184, 197, 214, 0.65), -5px -5px 12px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-btn:hover {
+  box-shadow: 7px 7px 16px #b8c5d6, -7px -7px 16px #ffffff;
+  transform: translateY(-1px);
+}
+
+.neu-btn:active,
+.neu-btn-pressed {
+  box-shadow: inset 4px 4px 8px #b8c5d6, inset -4px -4px 8px #ffffff !important;
+  transform: translateY(1px);
+}
+
+/* 4. Convex & Concave Surfaces */
+.neu-convex {
+  background: linear-gradient(145deg, #f5f9ff, #dce4f0);
+  box-shadow: 6px 6px 14px rgba(184, 197, 214, 0.7), -6px -6px 14px #ffffff;
+}
+
+.neu-concave {
+  background: linear-gradient(145deg, #dce4f0, #f5f9ff);
+  box-shadow: 6px 6px 14px rgba(184, 197, 214, 0.7), -6px -6px 14px #ffffff;
+}
+
+/* 5. Neumorphic Primary Accent Button */
+.neu-btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 6px 6px 16px #b8c5d6, -6px -6px 16px #ffffff, 0 0 16px rgba(37, 99, 235, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-btn-primary:hover {
+  box-shadow: 8px 8px 20px #b8c5d6, -8px -8px 20px #ffffff, 0 0 24px rgba(37, 99, 235, 0.55);
+  transform: translateY(-1px);
+}
+
+.neu-btn-primary:active {
+  box-shadow: inset 4px 4px 10px rgba(15, 23, 42, 0.5), inset -4px -4px 10px rgba(96, 165, 250, 0.3) !important;
+  transform: translateY(1px);
+}
+
+/* 6. Neumorphic Red Emergency SOS Button */
+.neu-btn-sos {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  box-shadow: 6px 6px 16px #b8c5d6, -6px -6px 16px #ffffff, 0 0 20px rgba(220, 38, 38, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.neu-btn-sos:hover {
+  box-shadow: 8px 8px 20px #b8c5d6, -8px -8px 20px #ffffff, 0 0 28px rgba(220, 38, 38, 0.7);
+  transform: translateY(-1px);
+}
+
+.neu-btn-sos:active {
+  box-shadow: inset 4px 4px 10px rgba(127, 29, 29, 0.7), inset -4px -4px 10px rgba(248, 113, 113, 0.3) !important;
+  transform: translateY(1px);
+}
+
+/* 7. Neumorphic Circular Microphone Dial */
+.neu-mic-dial {
+  background-color: #e6ecf5;
+  box-shadow: 10px 10px 24px #b8c5d6, -10px -10px 24px #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.neu-mic-dial-recording {
+  background-color: #e6ecf5;
+  box-shadow: inset 6px 6px 14px #a5b4c7, inset -6px -6px 14px #ffffff, 0 0 28px rgba(239, 68, 68, 0.55);
+  border: 2px solid rgba(239, 68, 68, 0.65);
+}
+
+/* 8. Dark Neumorphism (For Tech Telemetry & Login) */
+.neu-dark-bg {
+  background-color: #171c26;
+}
+
+.neu-dark-raised {
+  background-color: #1a202c;
+  box-shadow: 8px 8px 20px #0f131a, -8px -8px 20px #252d3e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.neu-dark-raised-sm {
+  background-color: #1a202c;
+  box-shadow: 4px 4px 10px #0f131a, -4px -4px 10px #252d3e;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.neu-dark-inset {
+  background-color: #141822;
+  box-shadow: inset 4px 4px 9px #0c0f14, inset -4px -4px 9px #1c2230;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.neu-dark-btn {
+  background-color: #1a202c;
+  box-shadow: 5px 5px 12px #0f131a, -5px -5px 12px #252d3e;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.2s ease;
+}
+
+.neu-dark-btn:hover {
+  box-shadow: 7px 7px 16px #0f131a, -7px -7px 16px #2a3346;
+  transform: translateY(-1px);
+}
+
+.neu-dark-btn:active {
+  box-shadow: inset 4px 4px 8px #0c0f14, inset -4px -4px 8px #262e3f !important;
+  transform: translateY(1px);
+}
+
+/* -------------------------------------------------------------
+ * Dynamic Animations & Micro-Interactions
  * ------------------------------------------------------------- */
 
 @keyframes float {

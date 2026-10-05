@@ -107,27 +107,27 @@ export const QuickSymptomScreen: React.FC<QuickSymptomScreenProps> = ({
   };
 
   return (
-    <div className="flex flex-col justify-between h-full min-h-[640px] p-5 bg-slate-50 relative">
+    <div className="flex flex-col justify-between h-full min-h-[640px] p-5 neu-bg relative overflow-y-auto">
       <div>
         {/* Top Header & Pagination */}
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-4">
           <button
             onClick={() => onNavigate('patient_translation')}
-            className="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-colors cursor-pointer"
+            className="w-10 h-10 rounded-2xl neu-btn flex items-center justify-center text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
             aria-label="Back"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
 
-          {/* Stepper Dots */}
-          <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-slate-300"></span>
-            <span className="w-2 h-2 rounded-full bg-slate-300"></span>
-            <span className="w-5 h-2 rounded-full bg-blue-600 transition-all"></span>
-            <span className="w-2 h-2 rounded-full bg-slate-300"></span>
+          {/* Stepper Dots inside Inset Channel */}
+          <div className="flex items-center gap-2 neu-inset-sm px-3 py-1.5 rounded-full">
+            <span className="w-2 h-2 rounded-full bg-slate-400"></span>
+            <span className="w-2 h-2 rounded-full bg-slate-400"></span>
+            <span className="w-6 h-2 rounded-full bg-blue-600 transition-all"></span>
+            <span className="w-2 h-2 rounded-full bg-slate-400"></span>
           </div>
 
-          <div className="w-8"></div>
+          <div className="w-10"></div>
         </div>
 
         <div className="mb-4">
@@ -153,20 +153,18 @@ export const QuickSymptomScreen: React.FC<QuickSymptomScreenProps> = ({
                     onToggleSymptom(symptom.id);
                   }
                 }}
-                className={`relative flex flex-col items-center justify-center p-3.5 rounded-2xl border transition-all cursor-pointer text-center group select-none ${
-                  symptom.bgColor
-                } ${
+                className={`relative flex flex-col items-center justify-center p-4 rounded-3xl transition-all cursor-pointer text-center group select-none ${
                   isSelected
-                    ? 'border-blue-600 ring-2 ring-blue-500/30 shadow-md bg-white'
-                    : `${symptom.borderColor} shadow-2xs`
+                    ? 'neu-inset border-2 border-blue-500/50 scale-[0.98]'
+                    : 'neu-raised hover:scale-[1.02]'
                 }`}
               >
                 {/* Audio Pronunciation Pill in top right */}
                 <button
                   type="button"
                   onClick={(e) => handlePlaySymptom(e, symptom)}
-                  className={`absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center transition-colors cursor-pointer ${
-                    isPlaying ? 'bg-blue-600 text-white animate-pulse' : 'text-slate-400 hover:text-slate-700 bg-white/70'
+                  className={`absolute top-2.5 right-2.5 w-7 h-7 rounded-xl neu-btn flex items-center justify-center transition-colors cursor-pointer ${
+                    isPlaying ? 'neu-btn-primary animate-pulse' : 'text-slate-500 hover:text-slate-800'
                   }`}
                   title="Pronounce Symptom"
                 >
@@ -175,13 +173,13 @@ export const QuickSymptomScreen: React.FC<QuickSymptomScreenProps> = ({
 
                 {/* Selection check indicator */}
                 {isSelected && (
-                  <div className="absolute top-2 left-2 w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-xs">
-                    <Check className="w-3 h-3 stroke-[3]" />
+                  <div className="absolute top-2.5 left-2.5 w-6 h-6 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
                   </div>
                 )}
 
-                {/* Symptom Icon */}
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform">
+                {/* Symptom Icon in Sunken Well */}
+                <div className="w-14 h-14 rounded-2xl neu-inset-sm flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
                   {renderSymptomIcon(symptom.id)}
                 </div>
 
@@ -189,12 +187,12 @@ export const QuickSymptomScreen: React.FC<QuickSymptomScreenProps> = ({
                 <span className={`text-sm font-bold tracking-tight ${symptom.textColor}`}>
                   {symptom.name}
                 </span>
-                <span className="text-[11px] font-medium text-slate-500">
+                <span className="text-[11px] font-medium text-slate-500 mt-0.5">
                   {symptom.hindiName}
                 </span>
 
                 {symptom.isCritical && (
-                  <span className="mt-1 text-[9px] font-bold uppercase tracking-wider text-rose-600 bg-rose-100/80 px-1.5 py-0.5 rounded-sm">
+                  <span className="mt-1.5 text-[9px] font-bold uppercase tracking-wider text-rose-600 neu-inset-sm px-2 py-0.5 rounded-full">
                     Priority
                   </span>
                 )}
@@ -205,10 +203,10 @@ export const QuickSymptomScreen: React.FC<QuickSymptomScreenProps> = ({
       </div>
 
       {/* Bottom CTA Button */}
-      <div className="pt-4">
+      <div className="pt-5 mt-4 border-t border-white/60">
         <button
           onClick={() => onNavigate('body_map')}
-          className="w-full h-13 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-semibold text-base flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 transition-all cursor-pointer"
+          className="w-full h-13 rounded-2xl neu-btn-primary font-bold text-base flex items-center justify-center gap-2 transition-all cursor-pointer"
         >
           <span>View Body Map</span>
           <ArrowRight className="w-5 h-5" />

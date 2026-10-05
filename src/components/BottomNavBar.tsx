@@ -25,73 +25,73 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
   const isMedicineActive = currentScreen === 'medicine';
 
   return (
-    <div className="bg-white/95 backdrop-blur-md border-t border-slate-200/90 px-3 py-2 flex items-center justify-around sm:justify-center sm:gap-4 md:gap-8 z-20 shrink-0">
+    <div className="neu-bg px-2 sm:px-3 py-2.5 flex items-center justify-around sm:justify-center sm:gap-2.5 md:gap-4 z-20 shrink-0 border-t border-white/60">
       {/* 1. Translate */}
       <button
         onClick={() => onNavigate('patient_translation')}
-        className={`flex sm:flex-row flex-col items-center gap-1 sm:gap-2 py-1.5 px-2.5 sm:px-3.5 rounded-xl transition-all cursor-pointer ${
-          isTranslateActive ? 'text-blue-600 bg-blue-50/80 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+        className={`flex sm:flex-row flex-col items-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3 rounded-xl transition-all cursor-pointer ${
+          isTranslateActive ? 'neu-inset ring-1 ring-blue-500/40 text-blue-700 font-black' : 'neu-btn text-slate-700 hover:text-slate-900'
         }`}
       >
-        <Mic className="w-4 h-4 stroke-[2.2]" />
-        <span className="text-[11px] sm:text-xs font-semibold">Translate</span>
+        <Mic className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+        <span className="text-[10px] sm:text-xs font-bold">Translate</span>
       </button>
 
       {/* 2. Symptoms */}
       <button
         onClick={() => onNavigate('symptoms')}
-        className={`flex sm:flex-row flex-col items-center gap-1 sm:gap-2 py-1.5 px-2.5 sm:px-3.5 rounded-xl transition-all cursor-pointer ${
-          isSymptomsActive ? 'text-blue-600 bg-blue-50/80 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+        className={`flex sm:flex-row flex-col items-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3 rounded-xl transition-all cursor-pointer ${
+          isSymptomsActive ? 'neu-inset ring-1 ring-blue-500/40 text-blue-700 font-black' : 'neu-btn text-slate-700 hover:text-slate-900'
         }`}
       >
-        <Activity className="w-4 h-4 stroke-[2.2]" />
-        <span className="text-[11px] sm:text-xs font-semibold">Symptoms</span>
+        <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+        <span className="text-[10px] sm:text-xs font-bold">Symptoms</span>
       </button>
 
       {/* 3. Body Map */}
       <button
         onClick={() => onNavigate('body_map')}
-        className={`flex sm:flex-row flex-col items-center gap-1 sm:gap-2 py-1.5 px-2.5 sm:px-3.5 rounded-xl transition-all cursor-pointer ${
-          isBodyMapActive ? 'text-blue-600 bg-blue-50/80 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+        className={`flex sm:flex-row flex-col items-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3 rounded-xl transition-all cursor-pointer ${
+          isBodyMapActive ? 'neu-inset ring-1 ring-blue-500/40 text-blue-700 font-black' : 'neu-btn text-slate-700 hover:text-slate-900'
         }`}
       >
-        <User className="w-4 h-4 stroke-[2.2]" />
-        <span className="text-[11px] sm:text-xs font-semibold">Body Map</span>
+        <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+        <span className="text-[10px] sm:text-xs font-bold">Body Map</span>
       </button>
 
       {/* 4. SOS Mode */}
       <button
         onClick={() => onNavigate('emergency')}
-        className={`relative flex sm:flex-row flex-col items-center gap-1 sm:gap-2 py-1.5 px-2.5 sm:px-3.5 rounded-xl transition-all cursor-pointer ${
-          isEmergencyActive ? 'text-red-600 bg-red-50 font-bold' : 'text-slate-600 hover:text-red-600 hover:bg-red-50/50'
+        className={`relative flex sm:flex-row flex-col items-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3 rounded-xl transition-all cursor-pointer ${
+          isEmergencyActive ? 'neu-inset ring-1 ring-red-500/50 text-red-600 font-black' : 'neu-btn text-red-600 font-bold'
         }`}
       >
         <div className="relative">
-          <Siren className="w-4 h-4 stroke-[2.2]" />
+          <Siren className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
           <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-600 animate-pulse" />
         </div>
-        <span className="text-[11px] sm:text-xs font-semibold">Emergency</span>
+        <span className="text-[10px] sm:text-xs font-bold">SOS</span>
       </button>
 
       {/* 5. Prescription */}
       <button
         onClick={() => onNavigate('medicine')}
-        className={`flex sm:flex-row flex-col items-center gap-1 sm:gap-2 py-1.5 px-2.5 sm:px-3.5 rounded-xl transition-all cursor-pointer ${
-          isMedicineActive ? 'text-blue-600 bg-blue-50/80 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+        className={`flex sm:flex-row flex-col items-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3 rounded-xl transition-all cursor-pointer ${
+          isMedicineActive ? 'neu-inset ring-1 ring-blue-500/40 text-blue-700 font-black' : 'neu-btn text-slate-700 hover:text-slate-900'
         }`}
       >
-        <Pill className="w-4 h-4 stroke-[2.2]" />
-        <span className="text-[11px] sm:text-xs font-semibold">Prescriptions</span>
+        <Pill className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+        <span className="text-[10px] sm:text-xs font-bold">Rx</span>
       </button>
 
       {/* 6. All 10 Screens Drawer Button */}
       <button
         onClick={onOpenDrawer}
-        className="flex sm:flex-row flex-col items-center gap-1 sm:gap-2 py-1.5 px-2.5 sm:px-3.5 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all cursor-pointer"
+        className="neu-btn flex sm:flex-row flex-col items-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3 rounded-xl text-slate-700 hover:text-blue-700 transition-all cursor-pointer"
         title="View All 10 Screens"
       >
-        <Layers className="w-4 h-4 stroke-[2]" />
-        <span className="text-[11px] sm:text-xs font-semibold">All Screens</span>
+        <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+        <span className="text-[10px] sm:text-xs font-bold">Index</span>
       </button>
     </div>
   );

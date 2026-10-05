@@ -159,16 +159,16 @@ export const AllScreensGallery: React.FC<AllScreensGalleryProps> = (props) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {screens.map((scr) => (
           <div key={scr.id} className="flex flex-col items-center">
-            {/* Mobile Mockup Card Container */}
-            <div className="relative w-full max-w-[340px] bg-slate-900 rounded-[32px] p-2.5 shadow-xl border border-slate-700/60 ring-1 ring-white/10 group">
+            {/* Neumorphic Tactile Bezel Card Container */}
+            <div className="relative w-full max-w-[340px] neu-raised rounded-[36px] p-3 transition-all hover:scale-[1.01] group bg-[#e6ecf5]">
               {/* Notch / Dynamic Island */}
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-900 rounded-full z-30 flex items-center justify-center">
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-900 rounded-full z-30 flex items-center justify-center shadow-xs">
                 <span className="w-2.5 h-2.5 rounded-full bg-slate-950 mr-2 border border-slate-800" />
                 <span className="w-2 h-2 rounded-full bg-blue-950/60" />
               </div>
 
               {/* Screen Frame Interior */}
-              <div className="relative w-full h-[620px] rounded-[24px] overflow-hidden bg-white flex flex-col shadow-inner">
+              <div className="relative w-full h-[620px] rounded-[26px] overflow-hidden neu-bg flex flex-col neu-inset-sm">
                 {/* Status Bar */}
                 <MobileStatusBar isEmergency={scr.isEmergency} />
 
@@ -178,33 +178,33 @@ export const AllScreensGallery: React.FC<AllScreensGalleryProps> = (props) => {
                 </div>
 
                 {/* Home Indicator */}
-                <div className="h-4 bg-white/95 flex items-center justify-center pb-1">
-                  <div className="w-24 h-1 bg-slate-300 rounded-full" />
+                <div className="h-4 neu-bg flex items-center justify-center pb-1">
+                  <div className="w-24 h-1 bg-slate-400/60 rounded-full" />
                 </div>
               </div>
 
               {/* Hover Overlay with button to launch interactive mode */}
-              <div className="absolute inset-2.5 rounded-[24px] bg-slate-900/60 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-3 p-4 z-40">
-                <span className="text-white text-sm font-bold text-center px-2">
+              <div className="absolute inset-3 rounded-[26px] bg-slate-950/70 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-3 p-4 z-40">
+                <span className="text-white text-sm font-black text-center px-2">
                   {scr.label}
                 </span>
                 <button
                   onClick={() => props.onSelectScreenForInteractive(scr.id)}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-lg flex items-center gap-1.5 cursor-pointer transform hover:scale-105 transition-all"
+                  className="neu-btn-primary px-5 py-2.5 text-white text-xs font-black rounded-xl shadow-lg flex items-center gap-2 cursor-pointer transform hover:scale-105 active:scale-95 transition-all"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <ExternalLink className="w-4 h-4 stroke-[2.5]" />
                   <span>Interact With Screen</span>
                 </button>
               </div>
             </div>
 
-            {/* Sub-label banner matching the screenshot footer pill */}
+            {/* Sub-label tactile button */}
             <button
               onClick={() => props.onSelectScreenForInteractive(scr.id)}
-              className="mt-3 px-4 py-1.5 rounded-lg bg-blue-950 text-white text-xs font-bold shadow-md hover:bg-blue-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="mt-3.5 px-4 py-2 rounded-xl neu-btn text-slate-800 text-xs font-black hover:text-blue-700 transition-all flex items-center gap-2 cursor-pointer active:scale-95"
             >
               <span>{scr.label}</span>
-              <Eye className="w-3.5 h-3.5 text-blue-300" />
+              <Eye className="w-3.5 h-3.5 text-blue-600 stroke-[2.5]" />
             </button>
           </div>
         ))}

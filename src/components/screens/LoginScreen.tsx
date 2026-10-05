@@ -112,14 +112,14 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
           </p>
         </div>
 
-        {/* High-Tech Glowing Card */}
-        <div className="relative rounded-3xl p-6 sm:p-8 bg-slate-900/85 backdrop-blur-xl border border-slate-700/80 shadow-2xl overflow-hidden ring-1 ring-white/10">
-          {/* Subtle Ambient Border Light Sweep */}
-          <div className="absolute -top-24 -left-24 w-48 h-48 bg-blue-500/20 rounded-full blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-indigo-500/20 rounded-full blur-2xl pointer-events-none" />
+        {/* High-Tech Neumorphic Dark Card */}
+        <div className="relative rounded-3xl p-6 sm:p-8 neu-dark-raised border border-white/10 shadow-2xl overflow-hidden">
+          {/* Subtle Ambient Glow */}
+          <div className="absolute -top-24 -left-24 w-48 h-48 bg-blue-500/15 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-indigo-500/15 rounded-full blur-2xl pointer-events-none" />
 
-          {/* Real-time Glowing ECG Ticker at top of card */}
-          <div className="mb-4 -mx-6 -mt-4 px-6 pt-3 pb-1 border-b border-slate-800 bg-slate-950/60">
+          {/* Real-time Glowing ECG Ticker in Sunken Neumorphic Channel */}
+          <div className="mb-4 -mx-6 -mt-4 px-6 pt-3 pb-2 neu-dark-inset border-b border-white/5">
             <div className="flex items-center justify-between text-[11px] font-semibold text-slate-400 mb-1">
               <span className="flex items-center gap-1.5 text-cyan-400">
                 <HeartPulse className="w-3.5 h-3.5 animate-heartbeat" />
@@ -130,14 +130,14 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
             <EcgHeartbeatLine color="#06b6d4" height={28} speed="normal" />
           </div>
 
-          <div className="mb-5 pb-3 border-b border-slate-800/80 flex items-center justify-between">
+          <div className="mb-5 pb-3 border-b border-white/5 flex items-center justify-between">
             <div>
               <h2 className="text-base font-bold text-white tracking-tight">Staff Sign In</h2>
               <p className="text-[11px] text-slate-400">Authenticate to enter medical console</p>
             </div>
-            <span className="text-[11px] font-bold text-emerald-300 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-xs">
+            <span className="text-[11px] font-bold text-emerald-300 neu-dark-inset px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-inner">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block" />
-              <span>Offline Capable</span>
+              <span>Offline Ready</span>
             </span>
           </div>
 
@@ -148,7 +148,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 Staff ID / Work Email
               </label>
               <div className="relative flex items-center">
-                <div className="absolute left-3 text-slate-400">
+                <div className="absolute left-3.5 text-slate-400">
                   <Mail className="w-4 h-4" />
                 </div>
                 <input
@@ -157,7 +157,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter staff ID or email"
                   required
-                  className="w-full pl-9 pr-3 py-2.5 text-sm font-semibold rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 bg-slate-800/90 text-white placeholder-slate-500 transition-all"
+                  className="w-full pl-10 pr-3 py-3 text-sm font-semibold rounded-2xl neu-dark-inset text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
                 />
               </div>
             </div>
@@ -168,7 +168,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                 <label className="text-xs font-bold text-slate-300">Authorization Code</label>
               </div>
               <div className="relative flex items-center">
-                <div className="absolute left-3 text-slate-400">
+                <div className="absolute left-3.5 text-slate-400">
                   <Lock className="w-4 h-4" />
                 </div>
                 <input
@@ -177,12 +177,12 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter password"
                   required
-                  className="w-full pl-9 pr-10 py-2.5 text-sm font-semibold rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 bg-slate-800/90 text-white placeholder-slate-500 transition-all"
+                  className="w-full pl-10 pr-11 py-3 text-sm font-semibold rounded-2xl neu-dark-inset text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 text-slate-400 hover:text-slate-200 cursor-pointer"
+                  className="absolute right-3.5 text-slate-400 hover:text-slate-200 cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -196,19 +196,19 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="rounded border-slate-600 bg-slate-800 text-blue-500 focus:ring-blue-500/30"
+                  className="rounded border-slate-700 bg-slate-800 text-blue-500 focus:ring-blue-500/30"
                 />
                 <span>Keep session active</span>
               </label>
             </div>
 
-            {/* Submit Button with motion spring */}
+            {/* Submit Button with tactile neumorphic push */}
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isLoading}
-              className="w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-blue-600/30 transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-75"
+              className="w-full mt-2 py-3.5 rounded-2xl neu-btn-primary font-bold text-sm transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-75"
             >
               {isLoading ? (
                 <>
@@ -225,13 +225,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
           </form>
 
           {/* Quick 1-Click Demo Login */}
-          <div className="mt-4 pt-4 border-t border-slate-800 text-center">
+          <div className="mt-4 pt-4 border-t border-white/5 text-center">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="button"
               onClick={handleQuickDemoLogin}
-              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-cyan-950/60 to-blue-950/60 hover:from-cyan-900/60 hover:to-blue-900/60 border border-cyan-500/30 text-cyan-300 text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"
+              className="w-full py-3 px-3 rounded-2xl neu-dark-btn border border-cyan-500/30 text-cyan-300 text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
             >
               <Zap className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
               <span>1-Click Instant Demo Login (Instant Overview) &rarr;</span>

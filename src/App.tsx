@@ -201,12 +201,12 @@ export default function App() {
   }
 
   return (
-    <div className="h-screen w-screen bg-slate-100 flex flex-col font-sans text-slate-800 overflow-hidden relative">
+    <div className="h-screen w-screen neu-bg flex flex-col font-sans text-slate-800 overflow-hidden relative">
       {/* Interactive Medical Canvas Background */}
-      <AnimatedBackground opacity={0.35} />
+      <AnimatedBackground opacity={0.2} />
 
-      {/* Top Website Header */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-2xs shrink-0">
+      {/* Top Website Header with Soft Extruded Neumorphic Bevel */}
+      <header className="sticky top-0 z-40 neu-bg border-b border-white/80 neu-raised-sm shrink-0">
         <div className="w-full px-3 sm:px-6 py-2.5 flex items-center justify-between gap-3">
           {/* Brand Logo & Name (Left Corner) */}
           <div className="flex items-center gap-2 sm:gap-3">
@@ -214,8 +214,8 @@ export default function App() {
               onClick={() => setCurrentScreen('splash')}
               className="flex items-center gap-2.5 text-left cursor-pointer group"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 text-white flex items-center justify-center shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
-                <span className="font-extrabold text-xs tracking-tight">H2H</span>
+              <div className="w-9 h-9 rounded-2xl neu-convex text-blue-600 flex items-center justify-center font-black text-xs border border-white/60 group-hover:scale-105 transition-transform">
+                <span className="tracking-tight">H2H</span>
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -223,14 +223,14 @@ export default function App() {
                     Hear2Heal
                   </span>
                   <span
-                    className={`hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                    className={`hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold neu-inset-sm ${
                       isOnline
-                        ? 'bg-emerald-100 text-emerald-800'
-                        : 'bg-slate-900 text-white'
+                        ? 'text-emerald-800'
+                        : 'text-slate-900'
                     }`}
                     title={isOnline ? 'App shell is cached for offline use after first load' : 'No network detected. Local features remain available.'}
                   >
-                    {isOnline ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
+                    {isOnline ? <Wifi className="w-3 h-3 text-emerald-600" /> : <WifiOff className="w-3 h-3" />}
                     {isOnline ? 'Offline Capable' : 'Offline Active'}
                   </span>
                 </div>
@@ -241,8 +241,8 @@ export default function App() {
             </button>
           </div>
 
-          {/* Active Language Pair Quick Bar (Center) */}
-          <div className="hidden sm:flex items-center gap-1.5 bg-slate-100/90 border border-slate-200/80 rounded-xl px-2.5 py-1 text-xs">
+          {/* Active Language Pair Quick Bar (Center) - Carved Sunken Well */}
+          <div className="hidden sm:flex items-center gap-1.5 neu-inset-sm rounded-2xl px-3 py-1.5 text-xs">
             <button
               onClick={() => setCurrentScreen('languages')}
               className="font-semibold text-slate-700 hover:text-blue-600 flex items-center gap-1.5 cursor-pointer"
@@ -257,7 +257,7 @@ export default function App() {
 
             <button
               onClick={handleSwapLanguages}
-              className="w-6 h-6 rounded-lg bg-white shadow-2xs border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:bg-slate-50 transition-all cursor-pointer hover:rotate-180 duration-300 active:scale-90"
+              className="w-6 h-6 rounded-xl neu-btn flex items-center justify-center text-slate-500 hover:text-blue-600 transition-all cursor-pointer hover:rotate-180 duration-300"
               title="Swap Languages"
             >
               <ArrowRightLeft className="w-3 h-3" />
@@ -281,10 +281,10 @@ export default function App() {
             {/* 1. Conversations History / Transcripts */}
             <button
               onClick={() => setCurrentScreen('history')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer card-interactive ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                 currentScreen === 'history'
-                  ? 'bg-blue-600 text-white shadow-xs'
-                  : 'bg-slate-100 hover:bg-slate-200/90 text-slate-700'
+                  ? 'neu-btn-primary'
+                  : 'neu-btn text-slate-700'
               }`}
               title="View Conversations History & Transcripts"
             >
@@ -296,10 +296,10 @@ export default function App() {
             {/* 2. Patient Profile */}
             <button
               onClick={() => setCurrentScreen('profile')}
-              className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer card-interactive ${
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                 currentScreen === 'profile'
-                  ? 'bg-blue-600 text-white font-bold shadow-xs'
-                  : 'bg-slate-100 hover:bg-slate-200/90 text-slate-700'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
               title="Patient Profile & Allergies"
             >
@@ -310,10 +310,10 @@ export default function App() {
             {/* 3. Languages */}
             <button
               onClick={() => setCurrentScreen('languages')}
-              className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer card-interactive ${
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                 currentScreen === 'languages'
-                  ? 'bg-blue-600 text-white font-bold shadow-xs'
-                  : 'bg-slate-100 hover:bg-slate-200/90 text-slate-700'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
               title="Manage Offline Language Packs"
             >
@@ -324,7 +324,7 @@ export default function App() {
             {/* 4. Quick Emergency SOS Button */}
             <button
               onClick={() => setCurrentScreen('emergency')}
-              className="px-3 py-1.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm shadow-red-500/30 transition-all cursor-pointer animate-pulse-glow-red"
+              className="px-3.5 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 neu-btn-sos transition-all cursor-pointer animate-pulse-glow-red"
               title="Emergency SOS Protocol"
             >
               <Siren className="w-3.5 h-3.5 animate-heartbeat" />
@@ -333,7 +333,7 @@ export default function App() {
 
             {/* Logged-in User Badge */}
             {currentUser && (
-              <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 bg-slate-100 rounded-xl border border-slate-200 text-xs text-slate-700 font-bold">
+              <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 neu-inset-sm rounded-xl text-xs text-slate-700 font-bold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span className="truncate max-w-[130px]">{currentUser.name}</span>
               </div>
@@ -342,7 +342,7 @@ export default function App() {
             {/* Logout Button */}
             <button
               onClick={handleLogout}
-              className="p-2 rounded-xl bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 transition-all cursor-pointer ml-0.5"
+              className="p-2 rounded-xl neu-btn text-slate-600 hover:text-red-600 transition-all cursor-pointer ml-0.5"
               title="Lock / Sign Out of Portal"
               aria-label="Logout"
             >
@@ -352,7 +352,7 @@ export default function App() {
             {/* Screens List Drawer Button */}
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="w-8 h-8 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl flex items-center justify-center transition-all cursor-pointer"
+              className="w-8 h-8 rounded-xl neu-btn text-slate-700 flex items-center justify-center transition-all cursor-pointer"
               title="All Screens Drawer"
               aria-label="Open menu"
             >
@@ -362,12 +362,12 @@ export default function App() {
         </div>
 
         {/* Continuous ECG Vital Signs Telemetry Line beneath Header */}
-        <EcgHeartbeatLine color="#2563eb" height={10} speed="normal" className="bg-slate-50/90 border-t border-slate-200/50" />
+        <EcgHeartbeatLine color="#2563eb" height={10} speed="normal" className="neu-inset-sm border-t border-white/50" />
       </header>
 
       {/* Main Layout: Left Side Dashboard + Right Workspace Content */}
       <div className="flex-1 flex flex-row w-full min-h-0 overflow-hidden relative">
-        {/* LEFT SIDE DASHBOARD (Containing Overview, Patient Translation, Doctor Reply, Symptoms Triage, Body Map, Conversation History, Emergency SOS, Prescriptions) */}
+        {/* LEFT SIDE DASHBOARD */}
         <SidebarDashboard
           currentScreen={currentScreen}
           onNavigate={(screenId) => {
@@ -385,7 +385,7 @@ export default function App() {
         {!isSidebarOpen && (
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="hidden md:flex absolute top-3.5 left-3.5 z-30 w-9 h-9 rounded-xl bg-white border border-slate-200/90 shadow-md text-slate-700 items-center justify-center hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 transition-all cursor-pointer group animate-fade-in-up animate-pulse-glow"
+            className="hidden md:flex absolute top-3.5 left-3.5 z-30 w-9 h-9 rounded-2xl neu-btn text-blue-600 items-center justify-center transition-all cursor-pointer group animate-fade-in-up"
             title="Open Dashboard"
             aria-label="Open Dashboard"
           >
@@ -394,25 +394,25 @@ export default function App() {
         )}
 
         {/* CENTER / RIGHT WORKSPACE AREA */}
-        <div className="flex-1 flex flex-col min-w-0 h-full overflow-y-auto bg-slate-100/60">
-          {/* Mobile Quick Action Pill Strip (Visible on mobile only when sidebar is hidden) */}
-          <div className="md:hidden bg-white border-b border-slate-200/80 px-3 py-2 flex items-center gap-1.5 overflow-x-auto text-xs font-semibold scrollbar-none shrink-0">
+        <div className="flex-1 flex flex-col min-w-0 h-full overflow-y-auto neu-bg">
+          {/* Mobile Quick Action Pill Strip */}
+          <div className="md:hidden neu-bg border-b border-white/80 px-3 py-2 flex items-center gap-2 overflow-x-auto text-xs font-semibold scrollbar-none shrink-0">
             <button
               onClick={() => setCurrentScreen('splash')}
-              className={`px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 ${
+              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 transition-all ${
                 currentScreen === 'splash'
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'text-slate-600 bg-slate-100'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
             >
               <span>Overview</span>
             </button>
             <button
               onClick={() => setCurrentScreen('patient_translation')}
-              className={`px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 ${
+              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 transition-all ${
                 currentScreen === 'patient_translation'
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'text-slate-600 bg-slate-100'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
             >
               <Mic className="w-3 h-3" />
@@ -420,10 +420,10 @@ export default function App() {
             </button>
             <button
               onClick={() => setCurrentScreen('doctor_reply')}
-              className={`px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 ${
+              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 transition-all ${
                 currentScreen === 'doctor_reply'
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'text-slate-600 bg-slate-100'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
             >
               <Sparkles className="w-3 h-3" />
@@ -431,10 +431,10 @@ export default function App() {
             </button>
             <button
               onClick={() => setCurrentScreen('symptoms')}
-              className={`px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 ${
+              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 transition-all ${
                 currentScreen === 'symptoms'
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'text-slate-600 bg-slate-100'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
             >
               <Activity className="w-3 h-3" />
@@ -442,10 +442,10 @@ export default function App() {
             </button>
             <button
               onClick={() => setCurrentScreen('body_map')}
-              className={`px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 ${
+              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 transition-all ${
                 currentScreen === 'body_map'
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'text-slate-600 bg-slate-100'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
             >
               <User className="w-3 h-3" />
@@ -453,8 +453,8 @@ export default function App() {
             </button>
             <button
               onClick={() => setCurrentScreen('emergency')}
-              className={`px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 font-bold ${
-                currentScreen === 'emergency' ? 'bg-red-600 text-white' : 'text-red-700 bg-red-50'
+              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 font-bold transition-all ${
+                currentScreen === 'emergency' ? 'neu-btn-sos' : 'neu-btn text-red-700'
               }`}
             >
               <Siren className="w-3 h-3 animate-pulse" />
@@ -462,10 +462,10 @@ export default function App() {
             </button>
             <button
               onClick={() => setCurrentScreen('medicine')}
-              className={`px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 ${
+              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 transition-all ${
                 currentScreen === 'medicine'
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'text-slate-600 bg-slate-100'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
             >
               <Pill className="w-3 h-3" />
@@ -473,10 +473,10 @@ export default function App() {
             </button>
             <button
               onClick={() => setCurrentScreen('history')}
-              className={`px-2.5 py-1 rounded-lg shrink-0 flex items-center gap-1 ${
+              className={`px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1 transition-all ${
                 currentScreen === 'history'
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'text-slate-600 bg-slate-100'
+                  ? 'neu-btn-primary font-bold'
+                  : 'neu-btn text-slate-700'
               }`}
             >
               <FileText className="w-3 h-3" />

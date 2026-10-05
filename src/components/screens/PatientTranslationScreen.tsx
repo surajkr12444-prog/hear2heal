@@ -202,7 +202,7 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
           <div className="flex items-center gap-2">
             <button
               onClick={() => onNavigate('doctor_reply')}
-              className="px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
+              className="px-3.5 py-2 rounded-2xl neu-btn text-blue-700 text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
             >
               <span>Doctor Reply</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -211,10 +211,10 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
         </div>
 
         {/* Emergency Triage Notice & Auto-Detect Banner */}
-        <div className="p-3 bg-gradient-to-r from-blue-50 via-indigo-50 to-sky-50 border border-blue-200/80 rounded-2xl mb-4 shadow-2xs">
+        <div className="p-3.5 neu-raised rounded-3xl mb-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <div className="w-8 h-8 rounded-xl neu-convex text-blue-600 flex items-center justify-center shrink-0 border border-white/60">
                 <Bot className="w-4 h-4" />
               </div>
               <div>
@@ -222,7 +222,7 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
                   <span className="text-xs font-bold text-slate-900">
                     Emergency Zero-Click AI Detection
                   </span>
-                  <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded-md">
+                  <span className="text-[10px] neu-inset-sm text-emerald-800 font-bold px-2 py-0.5 rounded-full">
                     No Manual Selection Needed
                   </span>
                 </div>
@@ -233,13 +233,13 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
             </div>
 
             {/* Auto-detect toggle switch */}
-            <div className="flex items-center gap-1.5 self-end sm:self-center">
+            <div className="flex items-center gap-1.5 self-end sm:self-center neu-inset-sm p-1 rounded-2xl">
               <button
                 onClick={() => setIsAutoDetectMode(true)}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${
+                className={`px-3 py-1 rounded-xl text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${
                   isAutoDetectMode
-                    ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
+                    ? 'neu-btn-primary'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <Zap className="w-3 h-3" />
@@ -247,10 +247,10 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
               </button>
               <button
                 onClick={() => onNavigate('languages')}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${
+                className={`px-3 py-1 rounded-xl text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1 ${
                   !isAutoDetectMode
-                    ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
+                    ? 'neu-btn-primary'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
                 title="Change manually in languages menu"
               >
@@ -262,40 +262,40 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
         </div>
 
         {/* PATIENT VOICE INPUT CARD */}
-        <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-xs mb-3 relative">
-          <div className="flex flex-wrap items-center justify-between text-xs mb-2.5 gap-2 pb-2 border-b border-slate-100">
+        <div className="p-5 neu-raised rounded-3xl mb-4 relative">
+          <div className="flex flex-wrap items-center justify-between text-xs mb-3 gap-2 pb-2.5 border-b border-white/60">
             {/* Auto-Detected Language Pill */}
-            <div className="flex items-center gap-2">
-              <span className="text-base">{analysis.detectedLanguage.flag}</span>
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">{analysis.detectedLanguage.flag}</span>
               <div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <span className="font-bold text-slate-900 text-sm">
                     {analysis.detectedLanguage.name} ({analysis.detectedLanguage.nativeName})
                   </span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 flex items-center gap-1">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold neu-inset-sm text-emerald-800 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                     <span>{analysis.confidence}% Match</span>
                   </span>
                 </div>
-                <span className="text-[10px] text-slate-400">
+                <span className="text-[10px] text-slate-500">
                   Script: {analysis.sourceScript} • Patient Voice Input
                 </span>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1 text-blue-600 text-xs font-semibold">
-                <Activity className={`w-3.5 h-3.5 ${isRecording ? 'animate-bounce' : ''}`} />
+              <div className="flex items-center gap-1.5 text-blue-600 text-xs font-semibold neu-inset-sm px-2.5 py-1 rounded-xl">
+                <Activity className={`w-3.5 h-3.5 ${isRecording ? 'animate-bounce text-red-600' : ''}`} />
                 <span>{isRecording ? 'Listening live...' : 'Voice input active'}</span>
               </div>
 
               {/* Type Mode Toggle */}
               <button
                 onClick={() => setIsTypingMode(!isTypingMode)}
-                className={`p-1.5 rounded-lg border text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer ${
+                className={`p-2 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all cursor-pointer ${
                   isTypingMode
-                    ? 'bg-blue-50 border-blue-300 text-blue-700'
-                    : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                    ? 'neu-btn-primary'
+                    : 'neu-btn text-slate-600'
                 }`}
                 title="Toggle manual text edit"
               >
@@ -305,7 +305,7 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
             </div>
           </div>
 
-          {/* Text input area */}
+          {/* Text input area in Sunken Neumorphic Well */}
           {isTypingMode ? (
             <textarea
               value={inputText}
@@ -314,17 +314,17 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
                 setActivePresetId('');
               }}
               rows={3}
-              className="w-full text-base font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20 rounded-xl p-2 border border-slate-200 resize-none leading-relaxed"
+              className="w-full text-base font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 rounded-2xl p-3 neu-inset resize-none leading-relaxed"
               placeholder="Speak or type symptoms. Core offline: English, Hindi, Bengali."
             />
           ) : (
-            <div className="text-base sm:text-lg font-bold text-slate-900 leading-relaxed min-h-[56px] flex items-center py-1">
+            <div className="text-base sm:text-lg font-bold text-slate-900 leading-relaxed min-h-[64px] flex items-center p-3.5 neu-inset rounded-2xl">
               "{inputText}"
             </div>
           )}
 
-          {/* Waveform Graphic with Animated Equalizer Bars */}
-          <div className="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+          {/* Waveform Graphic with Animated Equalizer Bars inside Inset Well */}
+          <div className="flex items-center justify-between p-2.5 neu-inset-sm rounded-2xl mt-3">
             <div className="flex items-center gap-1 h-5">
               {[30, 60, 95, 45, 80, 25, 90, 50, 75, 35, 85, 40].map((h, i) => (
                 <span
@@ -336,14 +336,14 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
                   }}
                   className={`w-1 rounded-full transition-all duration-150 ${
                     isRecording
-                      ? 'bg-gradient-to-t from-blue-600 to-indigo-500 soundwave-bar'
-                      : 'bg-slate-300'
+                      ? 'bg-gradient-to-t from-red-500 to-rose-600 soundwave-bar'
+                      : 'bg-slate-400'
                   }`}
                 />
               ))}
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[11px] text-slate-400 font-mono flex items-center gap-1">
+              <span className="text-[11px] text-slate-500 font-mono flex items-center gap-1">
                 {isRecording ? (
                   <>
                     <span className="w-2 h-2 rounded-full bg-red-600 animate-ping inline-block" />
@@ -357,74 +357,74 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
           </div>
         </div>
 
-        {/* Central Speak Action & Microphone with Pulsing Radar Effect */}
-        <div className="flex items-center justify-center my-3">
+        {/* Central Tactile Neumorphic Microphone Button */}
+        <div className="flex items-center justify-center my-4">
           <div className="flex flex-col items-center">
-            <div className="relative flex items-center justify-center">
+            {/* Concentric Dual-Ring Tactile Neumorphic Dial */}
+            <div className="relative flex items-center justify-center p-3 rounded-full neu-inset">
               {isRecording ? (
                 <>
-                  <div className="absolute w-24 h-24 rounded-full bg-red-500/30 animate-ripple-radar pointer-events-none" />
-                  <div className="absolute w-20 h-20 rounded-full bg-red-500/20 animate-ping pointer-events-none" />
-                  <div className="absolute w-28 h-28 rounded-full bg-blue-500/20 animate-pulse pointer-events-none" />
+                  <div className="absolute w-28 h-28 rounded-full bg-red-500/20 animate-ripple-radar pointer-events-none" />
+                  <div className="absolute w-24 h-24 rounded-full bg-red-500/30 animate-ping pointer-events-none" />
                 </>
               ) : (
-                <div className="absolute -inset-1 rounded-full bg-blue-400/20 blur-md pointer-events-none animate-pulse-glow" />
+                <div className="absolute -inset-1 rounded-full bg-blue-400/20 blur-md pointer-events-none" />
               )}
 
               <button
                 onClick={handleToggleRecord}
-                className={`w-16 h-16 sm:w-18 sm:h-18 rounded-full flex items-center justify-center text-white shadow-xl transition-all active:scale-95 cursor-pointer z-10 ${
+                className={`w-18 h-18 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all cursor-pointer z-10 ${
                   isRecording
-                    ? 'bg-red-600 shadow-red-600/40 ring-4 ring-red-200 animate-pulse-glow-red'
-                    : 'bg-gradient-to-tr from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-600/30 hover:scale-105'
+                    ? 'neu-mic-dial-recording bg-red-600 text-white animate-pulse-glow-red scale-95'
+                    : 'neu-mic-dial text-blue-600 hover:scale-105 active:scale-95'
                 }`}
                 title={isRecording ? 'Click to stop listening' : `Tap to speak (${patientLang.name})`}
               >
                 {isRecording ? (
-                  <MicOff className="w-8 h-8 animate-pulse" />
+                  <MicOff className="w-8 h-8 animate-pulse text-white" />
                 ) : (
-                  <Mic className="w-8 h-8 group-hover:animate-bounce" />
+                  <Mic className="w-8 h-8 text-blue-600 group-hover:animate-bounce" />
                 )}
               </button>
             </div>
 
-            <span className="text-xs font-bold text-slate-700 mt-2 text-center">
+            <span className="text-xs font-bold text-slate-800 mt-2.5 text-center">
               {isRecording
                 ? `🎙️ Listening in ${patientLang.name}...`
                 : `Tap Mic to Speak (${patientLang.name})`}
             </span>
-            <span className="text-[10px] text-slate-400 text-center max-w-md">
+            <span className="text-[10px] text-slate-500 text-center max-w-md">
               Offline voice uses the selected language pack ({patientLang.name}); text/script detection still verifies the transcript after recognition.
             </span>
             {recognitionError && (
-              <span className="mt-1.5 max-w-md text-center text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-2 py-1">
+              <span className="mt-1.5 max-w-md text-center text-[10px] font-semibold text-amber-800 neu-inset-sm px-3 py-1 rounded-xl">
                 {recognitionError}
               </span>
             )}
           </div>
         </div>
 
-        {/* EMERGENCY SCENARIO PRESETS: Quick One-Tap Testing */}
-        <div className="my-3">
-          <div className="flex items-center justify-between mb-1.5">
+        {/* EMERGENCY SCENARIO PRESETS: Quick One-Tap Testing with Neumorphic Chips */}
+        <div className="my-3.5">
+          <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
               <Zap className="w-3.5 h-3.5 text-amber-500 animate-bounce" />
               <span>Simulate Emergency Patient Speech (1-Tap Test):</span>
             </span>
-            <span className="text-[11px] text-slate-400">Local demo presets</span>
+            <span className="text-[11px] text-slate-500">Local demo presets</span>
           </div>
 
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
+          <div className="flex gap-2.5 overflow-x-auto pb-2.5 scrollbar-thin">
             {EMERGENCY_PRESETS.map((preset) => {
               const isSelected = activePresetId === preset.id;
               return (
                 <button
                   key={preset.id}
                   onClick={() => handleSelectPreset(preset)}
-                  className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition-all cursor-pointer card-interactive active:scale-95 ${
+                  className={`shrink-0 px-3.5 py-2 rounded-2xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-blue-600 text-white border-blue-600 shadow-md ring-2 ring-blue-400/40'
-                      : 'bg-white text-slate-700 border-slate-200 hover:border-blue-300 hover:bg-slate-50'
+                      ? 'neu-btn-primary'
+                      : 'neu-btn text-slate-700 hover:text-slate-900'
                   }`}
                 >
                   <span className="text-sm">{preset.flag}</span>
@@ -436,8 +436,8 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
         </div>
 
         {/* DOCTOR TRANSLATION DISPLAY CARD */}
-        <div className="p-4 bg-gradient-to-br from-sky-50/90 to-blue-50/70 border border-sky-200 rounded-2xl shadow-xs mt-2 relative overflow-hidden">
-          <div className="flex items-center justify-between text-xs text-sky-900 font-bold mb-2 pb-1.5 border-b border-sky-200/60">
+        <div className="p-5 neu-raised rounded-3xl mt-4 relative overflow-hidden">
+          <div className="flex items-center justify-between text-xs text-blue-900 font-bold mb-3 pb-2 border-b border-white/60">
             <div className="flex items-center gap-2">
               <Stethoscope className="w-4 h-4 text-blue-600 animate-heartbeat" />
               <span>
@@ -447,13 +447,13 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
 
             <div className="flex items-center gap-2">
               {/* Compact Doctor language switch inside the output card */}
-              <div className="inline-flex p-0.5 bg-white rounded-lg border border-sky-200 shadow-2xs">
+              <div className="inline-flex p-1 neu-inset-sm rounded-xl">
                 <button
                   onClick={() => handleToggleDoctorLang('en')}
-                  className={`px-2 py-0.5 text-[11px] font-bold rounded-md transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 text-[11px] font-bold rounded-lg transition-all cursor-pointer ${
                     doctorOutputLangId === 'en'
-                      ? 'bg-blue-600 text-white shadow-2xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      ? 'neu-btn-primary'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                   title="Show in English"
                 >
@@ -461,10 +461,10 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
                 </button>
                 <button
                   onClick={() => handleToggleDoctorLang('hi')}
-                  className={`px-2 py-0.5 text-[11px] font-bold rounded-md transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 text-[11px] font-bold rounded-lg transition-all cursor-pointer ${
                     doctorOutputLangId === 'hi'
-                      ? 'bg-blue-600 text-white shadow-2xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      ? 'neu-btn-primary'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                   title="Show in Hindi"
                 >
@@ -475,10 +475,10 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
               {/* Play Speech button with live soundwave equalizer bars */}
               <button
                 onClick={handlePlayDoctorAudio}
-                className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                   isPlayingAudio
-                    ? 'bg-blue-600 text-white shadow-xs animate-pulse-glow'
-                    : 'bg-white text-blue-700 border border-sky-300 hover:bg-blue-50 card-interactive active:scale-95'
+                    ? 'neu-btn-primary animate-pulse-glow'
+                    : 'neu-btn text-blue-700'
                 }`}
                 title="Play Audio in Doctor's Language"
               >
@@ -495,13 +495,15 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
             </div>
           </div>
 
-          {/* Primary Translated Output Text */}
-          <p className="text-slate-950 font-bold text-base sm:text-lg leading-snug">
-            {analysis.doctorTranslation}
-          </p>
+          {/* Primary Translated Output Text in Neumorphic Inset Display Well */}
+          <div className="neu-inset p-4 rounded-2xl mb-2.5">
+            <p className="text-slate-950 font-bold text-base sm:text-lg leading-snug">
+              {analysis.doctorTranslation}
+            </p>
+          </div>
 
-          {/* Secondary Translation Subtext (shows English if Hindi selected, or Hindi if English selected) */}
-          <div className="mt-2 pt-2 border-t border-sky-200/50 flex flex-wrap items-center justify-between gap-1 text-[11px] text-slate-600 font-medium">
+          {/* Secondary Translation Subtext */}
+          <div className="mt-2 pt-2 border-t border-white/60 flex flex-wrap items-center justify-between gap-1 text-[11px] text-slate-600 font-medium">
             <span>
               {doctorOutputLangId === 'en'
                 ? `हिन्दी अनुवाद: ${analysis.hindiTranslation}`
@@ -509,10 +511,10 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
             </span>
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-[10px]">
-            <span className={`px-2 py-1 rounded-full font-bold ${
+            <span className={`px-2.5 py-1 rounded-full font-bold neu-inset-sm ${
               analysis.translationCoverage === 'limited'
-                ? 'bg-amber-100 text-amber-800'
-                : 'bg-emerald-100 text-emerald-800'
+                ? 'text-amber-800'
+                : 'text-emerald-800'
             }`}>
               Offline engine: {analysis.translationCoverage === 'preset' ? 'Verified preset' : analysis.translationCoverage === 'exact' ? 'Exact core phrase' : analysis.translationCoverage === 'medical-phrase' ? 'Medical phrase match' : 'Limited free-text coverage'}
             </span>
@@ -522,15 +524,15 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
 
         {/* EMERGENCY TRIAGE & CRITICAL SYMPTOMS ALERT */}
         {analysis.triageLevel === 'red' ? (
-          <div className="mt-4 p-4 bg-red-50/95 border-2 border-red-400 rounded-2xl shadow-md animate-pulse-glow-red animate-scale-in">
+          <div className="mt-4 p-5 neu-raised rounded-3xl border border-red-300 animate-scale-in">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/40">
+              <div className="w-10 h-10 rounded-2xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-red-500/30">
                 <AlertTriangle className="w-6 h-6 animate-heartbeat" />
               </div>
               <div className="flex-1">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded-full text-[11px] font-black tracking-wide bg-red-600 text-white uppercase animate-pulse">
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black tracking-wide bg-red-600 text-white uppercase animate-pulse">
                       CRITICAL RED TRIAGE
                     </span>
                     <h4 className="text-sm font-bold text-red-950 tracking-tight">
@@ -539,22 +541,22 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
                   </div>
                   <button
                     onClick={() => onNavigate('emergency')}
-                    className="px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white text-xs font-bold transition-all shadow-md shadow-red-600/30 cursor-pointer flex items-center gap-1.5 animate-pulse-glow-red"
+                    className="px-3.5 py-1.5 rounded-xl neu-btn-sos text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 animate-pulse-glow-red"
                   >
                     <span>Launch SOS Protocol</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                <p className="text-xs text-red-900 mt-1.5 font-semibold">
+                <p className="text-xs text-red-900 mt-2 font-semibold">
                   {analysis.clinicalSummary}
                 </p>
 
-                <div className="mt-2 flex flex-wrap gap-1.5">
+                <div className="mt-2.5 flex flex-wrap gap-2">
                   {analysis.criticalSymptoms.map((symptom, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-900 border border-red-300 flex items-center gap-1 shadow-2xs"
+                      className="px-3 py-1 rounded-xl text-xs font-bold neu-inset-sm text-red-900 flex items-center gap-1.5"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
                       <span>{symptom}</span>
@@ -565,14 +567,14 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
             </div>
           </div>
         ) : analysis.triageLevel === 'yellow' ? (
-          <div className="mt-4 p-3.5 bg-amber-50/95 border border-amber-300 rounded-2xl shadow-sm animate-pulse-glow-yellow animate-scale-in">
+          <div className="mt-4 p-4 neu-raised rounded-3xl border border-amber-300 animate-scale-in">
             <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <div className="w-9 h-9 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-sm">
                 <ShieldAlert className="w-5 h-5 animate-bounce" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-200 text-amber-900 uppercase">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold neu-inset-sm text-amber-900 uppercase">
                     YELLOW TRIAGE (URGENT)
                   </span>
                   <button
@@ -585,11 +587,11 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
                 <p className="text-xs text-amber-950 font-medium mt-1">
                   {analysis.clinicalSummary}
                 </p>
-                <div className="mt-1.5 flex flex-wrap gap-1">
+                <div className="mt-2 flex flex-wrap gap-1.5">
                   {analysis.criticalSymptoms.map((s, i) => (
                     <span
                       key={i}
-                      className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-amber-100 text-amber-900"
+                      className="px-2.5 py-1 rounded-xl text-[11px] font-bold neu-inset-sm text-amber-900"
                     >
                       {s}
                     </span>
@@ -601,18 +603,18 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
         ) : null}
       </div>
 
-      {/* Navigation & Action Bar at Bottom */}
-      <div className="pt-4 mt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
+      {/* Navigation & Action Bar at Bottom with Neumorphic Buttons */}
+      <div className="pt-4 mt-5 border-t border-white/60 flex flex-wrap items-center justify-between gap-3">
         <button
           onClick={() => onNavigate('symptoms')}
-          className="flex-1 py-2.5 px-3 bg-white border border-slate-200 hover:border-blue-400 rounded-xl text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+          className="flex-1 py-3 px-4 neu-btn rounded-2xl text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition-all cursor-pointer"
         >
           <span>Select Symptoms</span>
         </button>
 
         <button
           onClick={() => onNavigate('doctor_reply')}
-          className="flex-1 py-2.5 px-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-md shadow-blue-500/20 transition-all active:scale-95 cursor-pointer"
+          className="flex-1 py-3 px-4 neu-btn-primary rounded-2xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer"
         >
           <span>Doctor Reply ({analysis.detectedLanguage.name})</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -620,7 +622,7 @@ export const PatientTranslationScreen: React.FC<PatientTranslationScreenProps> =
 
         <button
           onClick={() => onNavigate('history')}
-          className="py-2.5 px-3 bg-white border border-slate-200 hover:border-blue-400 rounded-xl text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+          className="py-3 px-4 neu-btn rounded-2xl text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition-all cursor-pointer"
         >
           <span>History</span>
         </button>

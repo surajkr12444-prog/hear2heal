@@ -115,12 +115,12 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
 
   return (
     <aside
-      className={`w-72 bg-white border-r border-slate-200/90 flex flex-col shrink-0 select-none shadow-xs transition-all duration-300 ease-in-out ${className}`}
+      className={`w-72 neu-bg border-r border-white/70 flex flex-col shrink-0 select-none neu-raised-sm transition-all duration-300 ease-in-out ${className}`}
     >
       {/* Sidebar Header / Hospital Ward Telemetry + Close/OFF Toggle */}
-      <div className="p-3.5 border-b border-slate-200/80 bg-slate-50/80 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
+      <div className="p-3.5 border-b border-white/50 neu-bg flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-xl neu-convex text-blue-600 flex items-center justify-center border border-white/60">
             <Stethoscope className="w-4 h-4" />
           </div>
           <div>
@@ -131,11 +131,11 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
           </div>
         </div>
 
-        {/* Dashboard Close / Collapse Button inside the sidebar (Icon only) */}
+        {/* Dashboard Close / Collapse Button inside the sidebar */}
         {onToggle && (
           <button
             onClick={onToggle}
-            className="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-200/80 transition-all cursor-pointer flex items-center justify-center group"
+            className="w-7 h-7 rounded-lg neu-btn text-slate-500 hover:text-slate-800 transition-all cursor-pointer flex items-center justify-center group"
             title="Collapse Dashboard"
             aria-label="Collapse Dashboard"
           >
@@ -155,7 +155,7 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
             <span className="text-[10px] font-bold text-slate-400">6 Tools</span>
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             {clinicalTools.map((item) => {
               const isActive = currentScreen === item.id;
               const Icon = item.icon;
@@ -164,18 +164,18 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center justify-between group cursor-pointer ${
+                  className={`w-full text-left p-2.5 rounded-2xl transition-all flex items-center justify-between group cursor-pointer ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/25 font-bold'
-                      : 'text-slate-700 hover:bg-slate-100/90 hover:text-slate-900'
+                      ? 'neu-btn-primary font-bold'
+                      : 'neu-btn text-slate-700 hover:text-slate-900'
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                         isActive
                           ? 'bg-white/20 text-white'
-                          : 'bg-slate-100 text-slate-600 group-hover:bg-white group-hover:text-blue-600 group-hover:shadow-2xs'
+                          : 'neu-inset-sm text-slate-600 group-hover:text-blue-600'
                       }`}
                     >
                       <Icon className="w-4 h-4 stroke-[2.2]" />
@@ -198,7 +198,7 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
                   <div className="flex items-center gap-1.5 shrink-0 ml-2">
                     {item.badge && !isActive && (
                       <span
-                        className={`px-1.5 py-0.5 rounded-md text-[9px] font-extrabold ${item.badgeColor}`}
+                        className={`px-1.5 py-0.5 rounded-md text-[9px] font-extrabold neu-inset-sm ${item.badgeColor}`}
                       >
                         {item.badge}
                       </span>
@@ -207,7 +207,7 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
                       className={`w-3.5 h-3.5 transition-transform ${
                         isActive
                           ? 'text-white'
-                          : 'text-slate-300 group-hover:text-slate-500 group-hover:translate-x-0.5'
+                          : 'text-slate-400 group-hover:text-slate-600 group-hover:translate-x-0.5'
                       }`}
                     />
                   </div>
@@ -226,7 +226,7 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
             <span className="text-[10px] font-bold text-red-500">Priority</span>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             {emergencyTools.map((item) => {
               const isActive = currentScreen === item.id;
               const Icon = item.icon;
@@ -236,16 +236,16 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
                   <button
                     key={item.id}
                     onClick={() => onNavigate(item.id)}
-                    className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center justify-between group cursor-pointer ${
+                    className={`w-full text-left p-2.5 rounded-2xl transition-all flex items-center justify-between group cursor-pointer ${
                       isActive
-                        ? 'bg-red-600 text-white shadow-md shadow-red-500/30 ring-2 ring-red-300'
-                        : 'bg-red-50/70 border border-red-200/90 text-red-900 hover:bg-red-100/80 hover:border-red-300'
+                        ? 'neu-btn-sos ring-2 ring-red-300'
+                        : 'neu-btn text-red-900 border border-red-200/80 hover:text-red-700'
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div
-                        className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                          isActive ? 'bg-white/20 text-white' : 'bg-red-600 text-white shadow-2xs'
+                        className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                          isActive ? 'bg-white/20 text-white' : 'bg-red-600 text-white shadow-xs'
                         }`}
                       >
                         <Icon className="w-4 h-4 stroke-[2.4] animate-pulse" />
@@ -267,7 +267,7 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
 
                     <div className="flex items-center gap-1.5 shrink-0 ml-2">
                       <span
-                        className={`px-1.5 py-0.5 rounded-md text-[9px] font-black tracking-wider ${
+                        className={`px-2 py-0.5 rounded-md text-[9px] font-black tracking-wider ${
                           isActive ? 'bg-white text-red-600' : 'bg-red-600 text-white animate-pulse'
                         }`}
                       >
@@ -282,18 +282,18 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center justify-between group cursor-pointer ${
+                  className={`w-full text-left p-2.5 rounded-2xl transition-all flex items-center justify-between group cursor-pointer ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/25 font-bold'
-                      : 'text-slate-700 hover:bg-slate-100/90 hover:text-slate-900'
+                      ? 'neu-btn-primary font-bold'
+                      : 'neu-btn text-slate-700 hover:text-slate-900'
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                         isActive
                           ? 'bg-white/20 text-white'
-                          : 'bg-slate-100 text-slate-600 group-hover:bg-white group-hover:text-blue-600 group-hover:shadow-2xs'
+                          : 'neu-inset-sm text-slate-600 group-hover:text-blue-600'
                       }`}
                     >
                       <Icon className="w-4 h-4 stroke-[2.2]" />
@@ -316,7 +316,7 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
                   <div className="flex items-center gap-1.5 shrink-0 ml-2">
                     {item.badge && !isActive && (
                       <span
-                        className={`px-1.5 py-0.5 rounded-md text-[9px] font-extrabold ${item.badgeColor}`}
+                        className={`px-1.5 py-0.5 rounded-md text-[9px] font-extrabold neu-inset-sm ${item.badgeColor}`}
                       >
                         {item.badge}
                       </span>
@@ -325,7 +325,7 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
                       className={`w-3.5 h-3.5 transition-transform ${
                         isActive
                           ? 'text-white'
-                          : 'text-slate-300 group-hover:text-slate-500 group-hover:translate-x-0.5'
+                          : 'text-slate-400 group-hover:text-slate-600 group-hover:translate-x-0.5'
                       }`}
                     />
                   </div>
@@ -337,8 +337,8 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
       </div>
 
       {/* Sidebar Footer / Active Telemetry Card */}
-      <div className="p-3 border-t border-slate-200/80 bg-slate-50/80 text-xs">
-        <div className="p-2.5 bg-white border border-slate-200/90 rounded-xl shadow-2xs">
+      <div className="p-3 border-t border-white/50 neu-bg text-xs">
+        <div className="p-3 neu-inset-sm rounded-2xl">
           <div className="flex items-center justify-between text-[11px] font-bold text-slate-700 mb-1.5">
             <span className="flex items-center gap-1">
               <Zap className="w-3.5 h-3.5 text-blue-600" />
@@ -363,7 +363,7 @@ export const SidebarDashboard: React.FC<SidebarDashboardProps> = ({
           </div>
         </div>
 
-        <div className="mt-2.5 flex items-center justify-between text-[10px] text-slate-400 px-1 font-medium">
+        <div className="mt-2.5 flex items-center justify-between text-[10px] text-slate-500 px-1 font-medium">
           <span className="flex items-center gap-1">
             <ShieldCheck className="w-3 h-3 text-emerald-600" />
             <span>Zero Cloud Leak</span>

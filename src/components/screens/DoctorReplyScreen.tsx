@@ -226,21 +226,21 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
   };
 
   return (
-    <div className="flex flex-col justify-between h-full min-h-[640px] p-4 sm:p-5 bg-slate-50 relative overflow-y-auto">
+    <div className="flex flex-col justify-between h-full min-h-[640px] p-4 sm:p-5 neu-bg relative overflow-y-auto">
       <div>
         {/* Web Tool Header */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-white/60">
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900">
                 Doctor Clinical Response
               </h2>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold neu-inset-sm text-blue-800">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
                 Clinician Portal
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
               Doctor speaks in <span className="font-bold text-slate-700">{doctorLang.name}</span> &rarr; renders translated voice for Patient in <span className="font-bold text-blue-700">{patientLang.name} ({patientLang.nativeName})</span>.
             </p>
           </div>
@@ -248,7 +248,7 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => onNavigate('patient_translation')}
-              className="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
+              className="px-3.5 py-2 rounded-2xl neu-btn text-slate-700 text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Patient Speech</span>
@@ -258,20 +258,20 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
 
         {/* Quick Clinical Doctor Questions (One-Tap Pills) */}
         <div className="mb-4">
-          <span className="text-xs font-bold text-slate-600 mb-1.5 block">
+          <span className="text-xs font-bold text-slate-700 mb-2 block">
             Rapid Doctor Inquiries (Quick Clinical Commands):
           </span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {DOCTOR_TEMPLATES.map((t) => {
               const isSelected = selectedTemplateId === t.id;
               return (
                 <button
                   key={t.id}
                   onClick={() => handleSelectTemplate(t)}
-                  className={`text-left p-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                  className={`text-left p-3 rounded-2xl text-xs font-semibold transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-blue-600 text-white border-blue-600 shadow-xs'
-                      : 'bg-white text-slate-700 border-slate-200 hover:border-blue-300 hover:bg-slate-50'
+                      ? 'neu-btn-primary'
+                      : 'neu-btn text-slate-700 hover:text-slate-900'
                   }`}
                 >
                   <p className="line-clamp-2">{doctorLang.id === 'hi' ? t.questionHi : t.questionEn}</p>
@@ -281,17 +281,17 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
           </div>
         </div>
 
-        {/* Doctor Input Card */}
-        <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-xs mb-3">
-          <div className="flex items-center justify-between text-xs text-slate-500 mb-2 pb-1.5 border-b border-slate-100">
-            <span className="font-bold text-slate-700 flex items-center gap-1.5">
-              <span>{doctorLang.flag}</span>
+        {/* Doctor Input Card in Neumorphic Raised Surface */}
+        <div className="p-5 neu-raised rounded-3xl mb-4">
+          <div className="flex items-center justify-between text-xs text-slate-500 mb-2 pb-2 border-b border-white/60">
+            <span className="font-bold text-slate-800 flex items-center gap-1.5">
+              <span className="text-base">{doctorLang.flag}</span>
               <span>Doctor Input ({doctorLang.name})</span>
             </span>
             <button
               onClick={handlePlayDoctorAudio}
-              className={`p-1 rounded-md transition-colors cursor-pointer ${
-                isPlayingDoctorAudio ? 'text-blue-600 animate-pulse' : 'text-slate-400 hover:text-slate-600'
+              className={`p-1.5 rounded-xl neu-btn transition-colors cursor-pointer ${
+                isPlayingDoctorAudio ? 'text-blue-600 animate-pulse' : 'text-slate-500 hover:text-slate-700'
               }`}
               title="Play question audio"
             >
@@ -307,66 +307,65 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
                 setSelectedTemplateId('');
               }}
               rows={2}
-              className="w-full text-base font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20 rounded-xl p-2 border border-slate-200 resize-none leading-relaxed"
+              className="w-full text-base font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 rounded-2xl p-3 neu-inset resize-none leading-relaxed"
               placeholder="Type doctor's inquiry..."
             />
           ) : (
-            <div className="text-base sm:text-lg font-bold text-slate-900 leading-relaxed min-h-[50px] flex items-center py-1">
+            <div className="text-base sm:text-lg font-bold text-slate-900 leading-relaxed min-h-[56px] flex items-center p-3.5 neu-inset rounded-2xl">
               "{doctorQuestion}"
             </div>
           )}
 
-          {/* Audio Waveform Graphic with Animated Soundwave Bars */}
-          <div className="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+          {/* Audio Waveform Graphic in Sunken Well */}
+          <div className="flex items-center justify-between p-2.5 neu-inset-sm rounded-2xl mt-3">
             <div className="flex items-center gap-1 h-5">
               {[30, 60, 85, 45, 95, 40, 70, 50, 30].map((h, i) => (
                 <span
                   key={i}
                   style={{ height: isRecording ? `${h}%` : `${Math.max(20, h * 0.4)}%` }}
                   className={`w-1 rounded-full transition-all duration-150 ${
-                    isRecording ? 'bg-blue-600 soundwave-bar' : 'bg-slate-300'
+                    isRecording ? 'bg-blue-600 soundwave-bar' : 'bg-slate-400'
                   }`}
                 />
               ))}
             </div>
-            <span className="text-[11px] text-slate-400 font-mono">
+            <span className="text-[11px] text-slate-500 font-mono">
               {isRecording ? '🔴 REC 00:03' : '00:03'}
             </span>
           </div>
         </div>
 
-        {/* Center Mic Action Section with Radar Ripples */}
-        <div className="flex items-center justify-center my-3">
+        {/* Center Mic Action Section with Concentric Neumorphic Dial */}
+        <div className="flex items-center justify-center my-4">
           <div className="flex flex-col items-center">
-            <div className="relative flex items-center justify-center">
+            <div className="relative flex items-center justify-center p-3 rounded-full neu-inset">
               {isRecording ? (
                 <>
-                  <div className="absolute w-24 h-24 rounded-full bg-blue-500/30 animate-ripple-radar pointer-events-none" />
-                  <div className="absolute w-20 h-20 rounded-full bg-blue-500/20 animate-ping pointer-events-none" />
-                  <div className="absolute w-28 h-28 rounded-full bg-blue-500/15 animate-pulse pointer-events-none" />
+                  <div className="absolute w-28 h-28 rounded-full bg-blue-500/20 animate-ripple-radar pointer-events-none" />
+                  <div className="absolute w-24 h-24 rounded-full bg-blue-500/30 animate-ping pointer-events-none" />
                 </>
               ) : (
-                <div className="absolute -inset-1 rounded-full bg-blue-400/20 blur-md pointer-events-none animate-pulse-glow" />
+                <div className="absolute -inset-1 rounded-full bg-blue-400/20 blur-md pointer-events-none" />
               )}
 
               <button
                 onClick={handleToggleRecord}
-                className={`w-16 h-16 rounded-full flex items-center justify-center text-white shadow-xl transition-all active:scale-95 cursor-pointer z-10 ${
+                className={`w-18 h-18 sm:w-20 sm:h-20 rounded-full flex items-center justify-center transition-all cursor-pointer z-10 ${
                   isRecording
-                    ? 'bg-red-600 shadow-red-600/35 ring-4 ring-red-200 animate-pulse-glow-red'
-                    : 'bg-blue-600 hover:bg-blue-700 shadow-blue-600/30 hover:scale-105'
+                    ? 'neu-mic-dial-recording bg-red-600 text-white animate-pulse-glow-red scale-95'
+                    : 'neu-mic-dial text-blue-600 hover:scale-105 active:scale-95'
                 }`}
                 title="Tap to speak"
               >
-                <Mic className="w-8 h-8 group-hover:animate-bounce" />
+                <Mic className={`w-8 h-8 ${isRecording ? 'text-white' : 'text-blue-600'} group-hover:animate-bounce`} />
               </button>
             </div>
 
-            <span className="text-xs font-bold text-slate-700 mt-2">
+            <span className="text-xs font-bold text-slate-800 mt-2.5">
               {isRecording ? '🎙️ Listening Doctor Voice...' : `Tap to Speak (${doctorLang.name})`}
             </span>
             {recognitionError && (
-              <span className="mt-1.5 max-w-sm text-center text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-2 py-1">
+              <span className="mt-1.5 max-w-sm text-center text-[10px] font-semibold text-amber-800 neu-inset-sm px-3 py-1 rounded-xl">
                 {recognitionError}
               </span>
             )}
@@ -374,10 +373,10 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
         </div>
 
         {/* Translated Output Card for the Patient */}
-        <div className="p-4 bg-emerald-50/80 border border-emerald-300/80 rounded-2xl shadow-xs mt-2 card-interactive">
-          <div className="flex items-center justify-between text-xs text-emerald-900 font-bold mb-2 pb-1.5 border-b border-emerald-200">
-            <div className="flex items-center gap-1.5">
-              <span>{patientLang.flag}</span>
+        <div className="p-5 neu-raised rounded-3xl mt-4">
+          <div className="flex items-center justify-between text-xs text-emerald-900 font-bold mb-2 pb-2 border-b border-white/60">
+            <div className="flex items-center gap-2">
+              <span className="text-base">{patientLang.flag}</span>
               <span>
                 Translated for Patient in {patientLang.name} ({patientLang.nativeName})
               </span>
@@ -385,10 +384,10 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
 
             <button
               onClick={handlePlayPatientAudio}
-              className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer card-interactive active:scale-95 ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                 isPlayingPatientAudio
-                  ? 'bg-emerald-600 text-white animate-pulse-glow shadow-xs'
-                  : 'bg-white text-emerald-800 border border-emerald-300 hover:bg-emerald-100'
+                  ? 'neu-btn-primary animate-pulse-glow'
+                  : 'neu-btn text-emerald-800'
               }`}
               title="Play Patient Audio"
             >
@@ -396,30 +395,32 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
               <span>{isPlayingPatientAudio ? 'Playing...' : 'Play Audio'}</span>
               {isPlayingPatientAudio && (
                 <span className="flex items-center gap-0.5 h-3 ml-1">
-                  <span className="w-0.5 h-full bg-white rounded-full soundwave-bar" />
-                  <span className="w-0.5 h-full bg-white rounded-full soundwave-bar" />
-                  <span className="w-0.5 h-full bg-white rounded-full soundwave-bar" />
+                  <span className="w-0.5 h-full bg-emerald-600 rounded-full soundwave-bar" />
+                  <span className="w-0.5 h-full bg-emerald-600 rounded-full soundwave-bar" />
+                  <span className="w-0.5 h-full bg-emerald-600 rounded-full soundwave-bar" />
                 </span>
               )}
             </button>
           </div>
 
-          <p className="text-slate-950 font-bold text-base sm:text-lg leading-snug">
-            {translatedPatientText}
-          </p>
+          <div className="neu-inset p-4 rounded-2xl">
+            <p className="text-slate-950 font-bold text-base sm:text-lg leading-snug">
+              {translatedPatientText}
+            </p>
+          </div>
         </div>
 
         {/* Doctor Quick Prescriptions / Guidance Quick Link */}
-        <div className="mt-3 p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-2xs">
+        <div className="mt-4 p-4 neu-raised rounded-3xl flex items-center justify-between">
           <div className="text-xs text-slate-600">
             <span className="font-bold text-slate-800">Need to prescribe medication?</span>
-            <div className="text-[11px] text-slate-400">
+            <div className="text-[11px] text-slate-500">
               Provide tablet, syrup & dosage schedule in patient's language
             </div>
           </div>
           <button
             onClick={() => onNavigate('medicine')}
-            className="px-3 py-1.5 bg-blue-50 text-blue-700 font-bold rounded-lg text-xs hover:bg-blue-100 transition-colors cursor-pointer"
+            className="px-3.5 py-1.5 neu-btn text-blue-700 font-bold rounded-xl text-xs transition-colors cursor-pointer"
           >
             Dosage &rarr;
           </button>
@@ -427,16 +428,16 @@ export const DoctorReplyScreen: React.FC<DoctorReplyScreenProps> = ({
       </div>
 
       {/* Navigation Shortcuts Bar at Screen Bottom */}
-      <div className="pt-4 flex items-center justify-between gap-2 border-t border-slate-200 mt-4">
+      <div className="pt-4 flex items-center justify-between gap-3 border-t border-white/60 mt-5">
         <button
           onClick={() => onNavigate('patient_translation')}
-          className="flex-1 py-2 px-3 bg-white border border-slate-200 hover:border-blue-400 rounded-xl text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+          className="flex-1 py-3 px-4 neu-btn rounded-2xl text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition-all cursor-pointer"
         >
           <span>&larr; Patient Translation</span>
         </button>
         <button
           onClick={() => onNavigate('history')}
-          className="py-2 px-3 bg-white border border-slate-200 hover:border-blue-400 rounded-xl text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+          className="py-3 px-4 neu-btn rounded-2xl text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 transition-all cursor-pointer"
         >
           <span>History</span>
         </button>

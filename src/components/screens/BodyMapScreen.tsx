@@ -56,13 +56,13 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
   };
 
   return (
-    <div className="flex flex-col justify-between h-full min-h-[640px] p-5 bg-slate-50 relative">
+    <div className="flex flex-col justify-between h-full min-h-[640px] p-5 neu-bg relative overflow-y-auto">
       <div>
         {/* Header */}
-        <div className="flex items-center gap-2 mb-2">
+        <div className="flex items-center gap-3 mb-3">
           <button
             onClick={() => onNavigate('symptoms')}
-            className="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-colors cursor-pointer"
+            className="w-10 h-10 rounded-2xl neu-btn flex items-center justify-center text-slate-700 hover:text-slate-900 transition-colors cursor-pointer"
             aria-label="Back"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -74,9 +74,9 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
         </div>
 
         {/* Main Canvas Area: Silhouette on Left, Pain Level Card on Right */}
-        <div className="relative mt-2 grid grid-cols-12 gap-3 items-center min-h-[360px]">
+        <div className="relative mt-2 grid grid-cols-12 gap-3.5 items-center min-h-[360px]">
           {/* Silhouette Left Column (Cols 1-7) */}
-          <div className="col-span-7 relative flex items-center justify-center py-2 bg-gradient-to-b from-sky-50/50 to-transparent rounded-2xl border border-slate-100">
+          <div className="col-span-7 relative flex items-center justify-center py-3 neu-raised rounded-3xl">
             <svg
               viewBox="0 0 200 320"
               className="w-full max-h-[350px] filter drop-shadow-sm select-none"
@@ -179,12 +179,12 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
 
           {/* Pain Level Controls Right Column (Cols 8-12) */}
           <div className="col-span-5 flex flex-col justify-center space-y-3">
-            <div className="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
-              <div className="text-center pb-2 border-b border-slate-100">
+            <div className="p-4 neu-raised rounded-3xl">
+              <div className="text-center pb-2.5 border-b border-white/60">
                 <span className="text-base font-bold text-slate-900 block">
                   {activeRegion.name}
                 </span>
-                <span className="text-xs text-slate-400 font-medium">
+                <span className="text-xs text-slate-500 font-medium">
                   {activeRegion.hindiName}
                 </span>
               </div>
@@ -194,14 +194,14 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
                   Select Pain Level
                 </span>
 
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <button
                     type="button"
                     onClick={() => onChangeSeverity('mild')}
-                    className={`w-full py-2 px-2.5 rounded-lg text-xs font-semibold flex items-center justify-between border transition-all cursor-pointer ${
+                    className={`w-full py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-between transition-all cursor-pointer ${
                       painSeverity === 'mild'
-                        ? 'bg-amber-500 text-white border-amber-600 shadow-xs font-bold'
-                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                        ? 'neu-inset text-amber-900 border-2 border-amber-500/60 font-bold'
+                        : 'neu-btn text-slate-700'
                     }`}
                   >
                     <span>Mild</span>
@@ -211,10 +211,10 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
                   <button
                     type="button"
                     onClick={() => onChangeSeverity('moderate')}
-                    className={`w-full py-2 px-2.5 rounded-lg text-xs font-semibold flex items-center justify-between border transition-all cursor-pointer ${
+                    className={`w-full py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-between transition-all cursor-pointer ${
                       painSeverity === 'moderate'
-                        ? 'bg-orange-500 text-white border-orange-600 shadow-xs font-bold'
-                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                        ? 'neu-inset text-orange-900 border-2 border-orange-500/60 font-bold'
+                        : 'neu-btn text-slate-700'
                     }`}
                   >
                     <span>Moderate</span>
@@ -224,10 +224,10 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
                   <button
                     type="button"
                     onClick={() => onChangeSeverity('severe')}
-                    className={`w-full py-2 px-2.5 rounded-lg text-xs font-semibold flex items-center justify-between border transition-all cursor-pointer ${
+                    className={`w-full py-2.5 px-3 rounded-xl text-xs font-semibold flex items-center justify-between transition-all cursor-pointer ${
                       painSeverity === 'severe'
-                        ? 'bg-red-500 text-white border-red-600 shadow-sm font-bold ring-2 ring-red-400/30'
-                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                        ? 'neu-inset text-red-900 border-2 border-red-500/60 font-bold'
+                        : 'neu-btn text-slate-700'
                     }`}
                   >
                     <span>Severe</span>
@@ -240,7 +240,7 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
               <button
                 type="button"
                 onClick={handleConfirm}
-                className="mt-3.5 w-full py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-bold shadow-md shadow-blue-500/25 transition-all cursor-pointer flex items-center justify-center gap-1"
+                className="mt-4 w-full py-2.5 px-3 rounded-xl neu-btn-primary font-bold text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5"
               >
                 {confirmed ? (
                   <>
@@ -248,14 +248,14 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
                     <span>Saved!</span>
                   </>
                 ) : (
-                  <span>Confirm</span>
+                  <span>Confirm Location</span>
                 )}
               </button>
             </div>
 
             {/* Quick alert reminder */}
             {painSeverity === 'severe' && (
-              <div className="p-2 bg-red-50 border border-red-200 rounded-lg text-[10px] text-red-700 font-medium flex items-center gap-1.5">
+              <div className="p-2.5 neu-raised rounded-2xl border border-red-300 text-[10px] text-red-700 font-bold flex items-center gap-1.5">
                 <ShieldAlert className="w-3.5 h-3.5 shrink-0 text-red-500" />
                 <span>Requires immediate triage</span>
               </div>
@@ -265,14 +265,14 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
       </div>
 
       {/* Bottom Front / Back Silhouette View Toggle */}
-      <div className="pt-3">
-        <div className="p-1 bg-slate-200/80 rounded-xl flex items-center">
+      <div className="pt-4 border-t border-white/60 mt-3">
+        <div className="p-1 neu-inset-sm rounded-2xl flex items-center gap-1.5">
           <button
             type="button"
             onClick={() => setCurrentView('front')}
-            className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
               currentView === 'front'
-                ? 'bg-blue-600 text-white shadow-xs'
+                ? 'neu-btn-primary'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -281,9 +281,9 @@ export const BodyMapScreen: React.FC<BodyMapScreenProps> = ({
           <button
             type="button"
             onClick={() => setCurrentView('back')}
-            className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
               currentView === 'back'
-                ? 'bg-blue-600 text-white shadow-xs'
+                ? 'neu-btn-primary'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
